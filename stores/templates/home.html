@@ -3,157 +3,99 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MED-CARE: Empowering Modern Healthcare</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-   
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-   
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-
+     {% load static %}
+    <title>AdVitum Healthcare</title>
+    <link rel="icon" type="image/png" href="{% static 'title_logo.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'title_logo.png' %}">
     
-
-
-   <style>
-        /* Modern Color Palette */
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <style>
+        /* --- ORIGINAL COLOR PALETTE --- */
         :root {
-            --primary-color: #00A79D; /* Modern Teal/Cyan - Trustworthy */
+            --primary-color: #00A79D;
             --primary-dark: #00877C;
-            --accent-color: #4BC0C0; /* Lighter Accent */
+            --accent-color: #4BC0C0;
             --text-dark: #2c3e50;
             --text-light: #7f8c8d;
             --background-light: linear-gradient(40deg, #ffffff, #f7f2f2);
-            --background-body:white;
+            --background-body: white;
             --shadow-light: rgba(0, 0, 0, 0.04);
             --shadow-medium: rgba(0, 0, 0, 0.1);
+            --gradient-subtle: linear-gradient(30deg, #ffffff, #eeebeb);
         }
 
-        /* RESET */
-        *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
-        html, body { font-family: 'Inter', sans-serif; background: var(--background-body); color: var(--text-dark); min-height: 100vh; scroll-behavior: smooth; }
-        a { text-decoration: none; color: var(--primary-color); }
-        button, a.explore-btn { cursor: pointer; }
+        /* RESET & BASE */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--background-body); 
+            color: var(--text-dark); 
+            min-height: 100vh; 
+            scroll-behavior: smooth; 
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; transition: 0.3s ease; }
+        ul { list-style: none; }
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* UTILITIES */
-        .page-section { padding: 20px 0; }
-        .main-container { max-width:1200px; margin:0 auto; padding:0 15px; }
-
-        /* NAVBAR */
+        /* --- NAVBAR & RESPONSIVE TOGGLE --- */
         nav {
-            position: fixed; top:0; left:0; width: 100%; height: 85px; display:flex; justify-content: space-between; align-items:center;
-            padding:0 30px; 
-            background: white; box-shadow:0 1px 10px var(--shadow-light); transition: 0.4s ease-in-out;
-            z-index: 10000;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            box-shadow: 0 10px 30px rgba(129, 129, 129, 0.15);
-
-            background-image:
-        /* 1. Main Diagonal Color Section */
-        linear-gradient(
-            -25deg,
-            rgb(234, 241, 241) 45%, /* Starts as white */
-            var(--accent-color) 40.1%, /* Sharp transition to accent color */
-            rgb(234, 241, 241) 30%,
-            var(--primary-color) 100% /* Blends to primary color at the far edge */
-        );
-        
-        }
-        nav.scrolled { background: var(--primary-color); box-shadow:0 4px 15px var(--shadow-medium); color:white; height: 60px;}
-
-        .logo-section { display:flex; align-items:center; gap:px; cursor:pointer; 
-             
-             padding: 10px;
-             border-radius: 25px;
-             border-width: 1;
-             border-color: #272727;
-              
-        }
-
-       .main-logo-image {
-  height: 50px;
-  width: auto;
-  border-radius: 5px;
-  margin-left: -15px;
-  margin-right: -0px;
-
-  /* This single line combines the white color filter and the drop shadow. */
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%) drop-shadow(0px 0px 0px white);
-}
-
-        .healthcare{
-            color: #555555;
-            font-size: .9rem;
-            font-weight: 600;
-            margin-top: -10px;
-        }
-        .logo { font-weight:800; font-size:1.8em; letter-spacing:-0.5px; color:rgb(51, 51, 51);transition:0.4s; font-style: italic;
-       
-        }
-        nav.scrolled .logo { color:rgb(34, 36, 36); }
-        
-
-        .nav-links-main { display:flex; gap:35px; list-style:none; justify-content:center; flex-grow:1; transition:0.3s; }
-        .nav-links-main li a { font-weight:500; padding:5px 0px; border-radius:0; transition:0.3s; color:var(--text-dark); position: relative; }
-        
-        .nav-links-main li a:hover, .nav-links-main li a.active-link { color: rgb(255, 255, 255); font-weight: 700;  border-radius: 10px;  padding:10px; }
-        .nav-links-main li a:hover::after, .nav-links-main li a.active-link::after { width: 100%; }
-        .nav-links-main li a::after {
-            content: ''; position: absolute; left: 0; bottom: -8px; width: 0; height: 3px;
-            background-color:var(--primary-dark); transition: width 0.3s ease; border-radius: 1px;
-        }
-
-        nav.scrolled .nav-links-main li a { color: rgba(255,255,255,0.9); }
-        nav.scrolled .nav-links-main li a:hover, nav.scrolled .nav-links-main li a.active-link { color:white; }
-        nav.scrolled .nav-links-main li a:hover::after, nav.scrolled .nav-links-main li a.active-link::after { background-color: white; }
-
-        .nav-auth-buttons { display:flex; gap:12px; align-items:center; }
-        .sign-up-btn, .profile-btn {
-            padding:10px 22px; border-radius:30px; font-weight:600; text-decoration:none; transition:0.3s ease;
-            box-shadow: 0 4px 8px var(--shadow-light);
-        }
-        .sign-up-btn { color:rgb(7, 24, 100);
-             background-color: white;
-             font-size: small;
+            position: fixed; top: 0; left: 0; width: 100%; height: 85px; 
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; background: white; transition: 0.4s ease-in-out;
+            z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
             
-            }
-        .sign-up-btn:hover { background:var(--primary-dark);color: white; transform:translateY(-1px); box-shadow: 0 6px 12px rgba(0,167,157,0.3); font-size: medium; }
-       
-        .profile-btn { color:rgb(7, 24, 100); background-color: white;font-size: small; }
-        .profile-btn:hover { background:var(--primary-dark);color: white; transform:translateY(-1px); box-shadow: 0 6px 12px rgba(0,167,157,0.3); font-size: medium; }
+        }
 
-        nav.scrolled .sign-up-btn { color:var(--primary-color); background-color: white; }
-        nav.scrolled .sign-up-btn:hover { background:var(--primary-dark);color: white; transform:translateY(-1px); box-shadow: 0 6px 12px rgba(0,167,157,0.3); }
+        nav.scrolled { background: var(--primary-color); height: 70px; border-radius: 0; }
+        .logo-section { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        .main-logo-image { height: 80px; width: auto; transition: 0.4s;  }
+        .logo { font-weight: 800; font-size: 1.3em; color: var(--primary-color); font-style: italic; }
+        .healthcare { color: #333; font-size: .65rem; font-weight: 700; margin-top: -5px; }
+        
+        nav.scrolled .logo, nav.scrolled .healthcare { color: rgb(58, 58, 58); }
+        nav.scrolled .main-logo-image { height: 60px; filter: brightness(0) invert(1); }
 
-        nav.scrolled .profile-btn { color:var(--primary-color); background-color: white; }
-        nav.scrolled .profile-btn:hover { background:var(--primary-dark);color: white; transform:translateY(-1px); box-shadow: 0 6px 12px rgba(0,167,157,0.3); }
+        .nav-links-main { display: flex; gap: 50px; }
+        .nav-links-main li a { font-weight: 500; font-size: 0.8rem; color: var(--text-dark); position: relative; padding-bottom: 5px; }
+        .nav-links-main li a::after {
+            content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 3px;
+            background: var(--primary-color); transition: 0.3s;
+        }
+        .nav-links-main li a:hover::after, .nav-links-main li a.active-link::after { width: 100%; font-weight: 800; font-size: 0.9rem; color: var(--primary-color); }
+        nav.scrolled .nav-links-main li a { color: white; }
+        nav.scrolled .nav-links-main li a::after { background: white; }
 
+        /* 3-Line Menu Toggle */
+        .menu-toggle { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; z-index: 10001; }
+        .menu-toggle .bar { width: 100%; height: 3px; background-color: var(--primary-color); border-radius: 10px; transition: 0.3s ease; }
+        nav.scrolled .menu-toggle .bar { background-color: white; }
+        .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+        .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-        /* HERO */
-        .hero-banner {
-    position: relative;
-    margin-top: 0px;
-    width: 100%;
-    height: 400px;
-    display: flex;
+        /* --- LIGHT & MODERN SOCIAL BAR --- */
+.social-bar {
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-    border-radius: 10px;
-    
-    /* Base: Clean White for optimal product visibility */
+    /* Soft gradient: Light Mint to a bright Clean White */
     background-color: white; 
     
     /* --- E-COMMERCE SLICE DESIGN CODE --- */
     background-image:
         /* 1. Main Diagonal Color Section */
         linear-gradient(
-            -45deg,
-            white 45%, /* Starts as white */
-            rgb(234, 241, 241) 45.1%, /* Sharp transition to accent color */
-            var(--accent-color) 70%,
+            -160deg,
+            rgb(255, 255, 255) 45%, /* Starts as white */
+            rgb(213, 233, 233) 45.1%, /* Sharp transition to accent color */
+            var(--accent-color) 60%,
             rgb(234, 241, 241)100% /* Blends to primary color at the far edge */
         );
 
@@ -165,1517 +107,1721 @@
     /* Add a subtle shadow for a 'floating' clean product feel */
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); 
     /* ----------------------------------- */
-}
-        
-
-        
-        .hero-background {
-            position:absolute; top:0; left:0; width:100%; height:100%;
-            background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d10?fit=crop&w=1920&q=80');
-            background-size:cover; background-position:center; filter: brightness(0.25) saturate(1.2); z-index:0;
-            opacity: 0.8; /* Slightly less harsh overlay */
-        }
-       /* --- Original Design Styles (Preserved) --- */
-.hero-content { 
-    position:relative; 
-    z-index:1; 
-    color:white; 
-    padding: 0 15px; 
-}
-.hero-content h1 { 
-    font-size:2.5em; 
-    font-weight:800; 
-    text-shadow:2px 2px 8px rgba(0,0,0,0.7); 
-    margin-bottom:20px; 
-    letter-spacing: 1px; 
-}
-.hero-content p { 
-    font-size:1.25em; 
-    max-width:700px; 
-    margin:auto 0 30px; 
-    font-weight: 300; 
-    text-shadow:1px 1px 4px rgba(0,0,0,0.5); 
-}
-.explore-btn { 
-    background:rgb(228, 240, 245); 
-    color:var(--primary-color); /* This color remains the same */
-    padding:15px 40px; 
-    border:none; 
-    border-radius:8px; 
-    font-weight:700; 
-    font-size:1.1em; 
-    text-decoration:none; 
-    transition:0.3s ease; 
-    box-shadow:0 6px 20px rgba(0,0,0,0.25); 
-    text-transform: uppercase; 
-    letter-spacing: 0.5px; 
-}
-.explore-btn:hover { 
-    background:#ffffff; 
-    transform:translateY(-3px); 
-    box-shadow:0 10px 25px rgba(56, 57, 80, 0.3);
-    font-weight:800; 
-}
 
 
-/* --- Updated New Animation Styles (Effect: Zoom from Single Point) --- */
-
-/* Keyframe animation definition: 'zoomInFromCenter' */
-@keyframes zoomInFromCenter {
-    0% {
-        opacity: 0;
-        transform: scale(0.5); /* Start at half its original size */
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1); /* End at its full, original size */
-    }
-}
-
-/* Apply the new animation to the hero content elements */
-.hero-content h1,
-.hero-content p,
-.explore-btn {
-    /* We only need to change the animation name here */
-    opacity: 0; 
-    animation: zoomInFromCenter 1s ease-out forwards; /* Changed animation name */
-}
-
-/* Keep the staggered delays so they still appear one after the other */
-.hero-content h1 {
-    animation-delay: 0.3s; /* Heading appears first */
-}
-
-.hero-content p {
-    animation-delay: 0.6s; /* Paragraph appears after heading */
-}
-
-.explore-btn {
-    animation-delay: 0.9s; /* Button appears last */
-}
-        /* SEARCH BAR - REFACTORED */
-        .search-container-main { 
-            position: relative; max-width:800px; margin:-30px auto 30px; padding:0 15px; z-index:10; 
-            
-            transition:0.3s; 
-            
-        }
-        .sticky-search-wrapper {
-            position: sticky;
-            top: 70px; /* Navbar height + 5px margin */
-            z-index: 9999;
-            background: transparent;
-            padding: 10px 0;
-            margin-bottom: 30px;
-            height: auto;
-            box-shadow: 0 4px 10px var(--shadow-light);
-            display: none; /* Hidden by default, shown on scroll */
-            transition: top 0.4s ease;
-        }
-        .sticky-search-wrapper.visible {
-            display: block;
-
-        }
-        #stickySearchInput {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            display: block;
-            padding: 15px 60px 15px 25px;
-            border-radius: 35px;
-            border: 1px solid var(--accent-color);
-            font-size: 1em;
-            box-shadow: 0 4px 15px var(--shadow-medium);
-        }
-        #stickySearchInput:focus { outline:none; border-color: var(--primary-dark); box-shadow:0 0 0 3px var(--accent-color); }
-        .search-icon-sticky { position:absolute; right:35px; top:50%; transform:translateY(-40%); color:var(--primary-color); font-size:1.4em; pointer-events:none; }
-
-        .search-input-hero { 
-            width:100%; padding:18px 60px 18px 25px; border-radius:35px; border:none; font-size:1.1em; 
-            box-shadow:0 10px 30px rgba(0,0,0,0.15); transition:0.3s; background: white;
-        }
-        .search-input-hero:focus { outline:none; box-shadow:0 0 0 4px var(--accent-color), 0 10px 30px rgba(0,0,0,0.2); }
-        .search-icon-hero { position:absolute; right:35px; top:50%; transform:translateY(-45%); color:var(--primary-color); font-size:1.5em; pointer-events:none; }
-
-
-
-.categories-container { 
-    width: 100%;
-    background: #ffffff;
-    padding: 10px 10px 10px 20px;
-    margin-bottom: 60px;
-    margin-top: -55px;
-    height: 90px;
-    display: flex;
-    overflow-x: auto;
-    gap: 15px;
-
-    border-bottom-left-radius: 18px;
-    border-bottom-right-radius: 18px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-
-    /* === 800px WIDE SOFT CURVED BUCKET === */
-    clip-path: polygon(
-        0% 0%,
-        calc(50% - 420px) 0%,            /* start bucket */
-
-        /* soft left start */
-        calc(50% - 420px + 28px) 0%,
-        calc(50% - 420px + 16px) 35px,   /* softened corner */
-
-        
-        /* soft right end */
-        calc(50% + 420px - 16px) 35px,
-        calc(50% + 420px - 28px) 0%,
-
-        calc(50% + 420px) 0%,            /* end bucket */
-
-        100% 0%,
-        100% 100%,
-        0% 100%
-    );
-
-    overflow: hidden;
-}
-
-
-
-
-/* Scrollbar (No change needed, it's already modern) */
-.categories-container::-webkit-scrollbar { height: 6px; } /* Slightly thinner scrollbar */
-.categories-container::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 3px; }
-
-/* 🌟 Category Item */
-.category-item { 
-    flex: none; 
-    padding: 6px;
-    border-radius: 20px; /* Pill shape for a modern filter tag look */
-    text-align: center;
-    background: #f0f3f8; /* Very light, soft background */
-    color: black; 
-    
-    font-weight: 380; 
-    cursor: pointer; 
-    transition: all 0.25s ease; /* Smoother transition */
-    white-space: nowrap; 
-    
-    /* MODIFIED: Cleaner border and shadow */
-     box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Minimal shadow */
-    
-    font-size: 0.75em; /* Slightly adjusted size for cleaner look */
-    
-    /* MODIFIED: Adjusted margins to align with new padding/gaps */
-    margin-top: 40px; /* Clean up margins, let gap handle spacing */
-}
-
-/* 🖱️ Category Item Hover */
-.category-item:hover { 
-    background: var(--accent-color); 
-    color: white; 
-    transform: translateY(-1px); /* Subtle lift on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Clearer shadow on hover */
-    font-size: 0.9em; /* Keep font size consistent with base */
-    font-weight: 600; /* Subtle weight increase */
-}
-
-/* ✅ Category Item Active */
-
-.category-item.active { 
-    background: white; 
-    color:var(--primary-color);
-    /* MODIFIED: Stronger shadow for the active state */
-    box-shadow: 0 5px 15px rgba(153, 171, 177, 0.4); 
-    border-color: var(--primary-dark);
+    padding: 10px 5%; 
+    margin-top: 85px;
+    position: relative; 
+    overflow: hidden; 
+    box-shadow: 0 2px 15px rgba(0, 167, 157, 0.1);
+    border-bottom: 2px solid #f0fdfa;
     border-radius: 10px;
-    font-size: 0.85em; /* Slightly larger active text */
-    font-weight: 650; 
 }
 
-.category-item a { color: inherit; }
-
-
-
-
-
-        /* PAGE TITLE */
-        .page-title { 
-            text-align:center; margin:20px auto 40px; max-width:1000px; padding: 10px; color:white; 
-                background-image:
-        /* 1. Main Diagonal Color Section */
-        linear-gradient(
-            -25deg,
-            rgb(220, 230, 230) 25%, /* Starts as white */
-            var(--accent-color) 40.1%, /* Sharp transition to accent color */
-            rgb(220, 230, 230) 55%,
-            var(--accent-color) 100% /* Blends to primary color at the far edge */
-        );
-              border-radius: 20px;
-              color: rgb(70, 69, 69);
-              font-weight: 500;
-              margin-bottom: -33px;
-               box-shadow: 0 5px 15px rgba(69, 69, 70, 0.4); 
-              border-width: 1;
-              border-color: rgb(134, 124, 124);
-           font-size:1 em; font-weight:700; 
-            text-transform:uppercase; letter-spacing:4px;
-        }
-
-      
-
- /* --- ENHANCED SMALL & MODERN CARD DESIGN --- */
-
-/* 📐 Main Layout Containers (No change needed here) */
-.main-container { 
-    max-width: 1200px; 
-    padding: 0 15px;
-    background-color: rgb(255, 255, 255);
-    padding-left: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    padding-top: 70px;
-    border-radius: 15px;
-    border-color: var(--accent-color);
-    border-width: .1rem;
-
-     /* === 800px WIDE SOFT CURVED BUCKET === */
-    clip-path: polygon(
-        0% 0%,
-        calc(50% - 533px) 0%,            /* start bucket */
-
-        /* soft left start */
-        calc(50% - 533px + 28px) 0%,
-        calc(50% - 533px + 16px) 40px,   /* softened corner */
-
-        
-        /* soft right end */
-        calc(50% + 533px - 16px) 40px,
-        calc(50% + 533px - 28px) 0%,
-
-        calc(50% + 533px) 0%,            /* end bucket */
-
-        100% 0%,
-        100% 100%,
-        0% 100%
-    );
-
-    overflow: hidden;
-}
-
-.container { 
-    /* Further reduced minmax from 240px to 220px for a slightly smaller card */
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
-    gap: 20px; /* Reduced gap for a denser, smaller look */
-    
-}
-
-/* 🖼️ Card Structure and Style */
-.card { 
-    background: rgb(234, 241, 241); 
-    border-radius: 10px; /* Slightly smaller radius for a tighter, cleaner look */
-    /* Modern, light default shadow */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06); 
-    display: flex; 
-    flex-direction: column; 
-    /* New, springier transition for a premium feel */
-    transition: all 0.35s cubic-bezier(0.2, 0.5, 0.3, 1.2); 
-    border: 1px solid #eee; /* Very subtle default border for definition */
-    cursor: pointer; 
-    overflow: hidden;
-    margin: 8px;
-}
-
-/* ✨ Enhanced Premium Hover Effect */
-.card:hover { 
-    transform: translateY(-10px) scale(1.02); 
-    border-color: rgb(87, 98, 99); 
-     border-width: .15rem;  
-      box-shadow: 0 5px 15px rgba(153, 171, 177, 0.4); 
-      background-color: white;
-     
-}
-
-/* 📸 Image Styling */
-.card img { 
-    width: 100%; 
-    height: 160px; /* Reduced image height (was 180px) */
-    object-fit: cover; 
-    border-radius: 10px 10px 0 0; 
-    margin: 3px;
-    transition: transform 0.4s cubic-bezier(0.2, 0.5, 0.3, 1.2);
-}
-
-.card:hover img { 
-    transform: scale(1.08); /* More noticeable image scale on hover */
-}
-
-/* 📜 Content Area */
-.card-content { 
-    padding: 12px 15px 15px; /* Further reduced padding */
-    display: flex; 
-    flex-direction: column; 
-    flex-grow: 1; 
-}
-
-/* 🗣️ Typography */
-.card-content h3 { 
-    color: var(--primary-dark); 
-    font-size: 1.2em; /* Reduced title font size */
-    margin-bottom: 4px; /* Reduced margin */
+/* Bright text and icons */
+.social-bar .owner { 
+    font-size: 0.75rem; 
     font-weight: 700; 
-    /* Truncation setup */
-    display: -webkit-box;
-  
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    min-height: 2.5em; /* Ensure two lines worth of space */
-}
-
-.card-content p { 
-    font-size: 0.85em; /* Further reduced body text size */
-    color: rgb(39, 39, 39); 
-    flex-grow: 1; 
-    margin: 4px 0 6px; /* Reduced vertical margin */
-    line-height: 1.5;
-    font-weight: 400;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.card-content .price { 
-    color: #e74c3c; 
-    font-weight: 800; /* Made price extra bold */
-    font-size: 1.em; /* Slightly increased price size for visibility */
-    margin-top: 5px; 
-}
-
-/* 🛒 Buttons */
-.button-row { 
-    display: flex; 
-    gap: 6px; /* Reduced button gap */
-    margin-top: 10px; /* Reduced top margin */
-}
-
-.add-to-cart, .order { 
-    flex: 1; 
-    padding: 7px; /* Reduced button padding (was 8px) */
-    font-weight: 600; 
-    border-radius: 6px; 
-    border: none; 
-    cursor: pointer; 
-    text-transform: uppercase; 
-    font-size: 0.7em; /* Made text smaller (was 0.75em) */
-    transition: 0.2s; 
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-}
-
-.add-to-cart { 
-    background: #2ecc71; 
-    color: white; 
-}
-
-.add-to-cart:hover { 
-    background: #27ae60; 
-    transform: scale(1.03); 
-    box-shadow: 0 4px 8px rgba(46, 204, 113, 0.4); 
-}
-
-.order { 
-    background: var(--primary-color); 
-    color: white; 
-}
-
-.order:hover { 
-    background: var(--primary-dark); 
-    transform: scale(1.03); 
-    box-shadow: 0 4px 8px rgba(0, 167, 157, 0.4); 
-}
-
-
-
-        /* ABOUT / CONTACT SECTIONS */
-        .about-us, .contact-info {
-            padding: 70px 20px;
-            box-shadow: inset 0 0 100px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-        .about-us { 
-            background: linear-gradient(135deg,var(--primary-dark) 0%,var(--primary-color) 100%); 
-            color:white;
-        }
-        .about-us h3, .contact-info h3 { font-size:2.5em; margin-bottom:20px; font-weight:900; letter-spacing:4px; text-transform:uppercase; text-shadow:0 0 10px rgba(0,0,0,0.5); }
-        .about-us p { max-width:900px; margin:0 auto 15px; line-height:1.7; font-weight: 300; font-size: 1.1em; text-shadow:0 0 5px rgba(0,0,0,0.25); }
-
-        .contact-info {
-            background: var(--background-light);
-            color: var(--text-dark);
-        }
-        .contact-details {
-            display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap;
-        }
-        .contact-details div {
-            flex: 0 0 250px; text-align: left; padding: 20px; border-radius: 10px; background: white; box-shadow: 0 4px 15px var(--shadow-medium);
-            border-top: 5px solid var(--accent-color);
-        }
-        .contact-details i { font-size: 1.5em; color: var(--primary-color); margin-right: 10px; }
-        .contact-details h4 { margin-bottom: 10px; font-size: 1.2em; color: var(--primary-dark); }
-        .contact-details p { font-size: 1em; color: var(--text-light); margin: 5px 0; }
-        .contact-details a { display: block; margin-top: 5px; font-weight: 500;}
-
-        /* FOOTER - ATTRACTIVE */
-        footer {
-            background: var(--text-dark); /* Dark background for contrast */
-            color: white;
-            padding: 60px 30px 20px;
-            font-size: 0.9em;
-        }
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-        .footer-logo-section { flex: 0 0 300px; }
-        .footer-logo { font-weight: 800; font-size: 1.5em; color: var(--primary-color); margin-bottom: 15px; }
-        .footer-logo-section p { color: #bdc3c7; line-height: 1.6; }
-
-        .footer-links-group { display: flex; gap: 60px; }
-        .footer-links h4 { font-size: 1.1em; margin-bottom: 15px; color: var(--accent-color); border-bottom: 2px solid var(--primary-dark); padding-bottom: 5px; }
-        .footer-links ul { list-style: none; }
-        .footer-links ul li { margin-bottom: 8px; }
-        .footer-links ul li a { color: #bdc3c7; transition: color 0.3s; }
-        .footer-links ul li a:hover { color: var(--primary-color); }
-
-        .footer-social { margin-top: 15px; }
-        .footer-social a { color: white; margin-right: 15px; font-size: 1.5em; transition: color 0.3s; }
-        .footer-social a:hover { color: var(--primary-color); }
-
-        .footer-bottom { 
-            text-align: center; border-top: 1px solid var(--primary-dark); margin-top: 40px; padding-top: 20px;
-            color: #95a5a6;
-        }
-
-        /* TOAST */
-        .toast-message { visibility:hidden; min-width:300px; margin-left:-150px; background:rgb(110, 161, 163); color:rgb(49, 49, 49); text-align:center; border-radius:12px; padding:18px 30px; position:fixed; z-index:10001; left:50%; bottom:40px; font-size:1.1em; font-weight:700; opacity:0; transform:translateY(20px); transition:0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); box-shadow:0 8px 20px rgba(62, 121, 121, 0.5); border:3px  }
-        .toast-message.show { visibility:visible; opacity:1; transform:translateY(0); }
-
-        /* RESPONSIVE */
-        @media(max-width:1050px){ .nav-links-main{gap:20px;} }
-        @media(max-width:900px){ 
-            .nav-links-main{display:none;} 
-            .hero-content h1{font-size:2.8em;} 
-            .hero-content p{font-size:1.1em;} 
-            .search-container-main{max-width:90%;} 
-            .container{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));} 
-            .card{border-radius:12px;} 
-            .card img{height:200px; border-radius:12px 12px 0 0;}
-            .footer-links-group { gap: 30px; }
-        }
-        @media(max-width:600px){ 
-            nav{padding:0 15px;height:65px;} 
-            .hero-banner{height:380px; margin-top: 65px;} 
-            .hero-content h1{font-size:2.2em; margin-bottom:15px;} 
-            .hero-content p{font-size:1em; margin-bottom:20px;} 
-            .explore-btn{padding:12px 30px; font-size:1em;}
-            .search-container-main{max-width:90%; margin-top: -30px;} 
-            .search-input-hero{padding:15px 50px 15px 20px;font-size:1em;} 
-            .search-icon-hero{right:28px; font-size:1.3em;}
-            .categories-container{padding:10px 15px; border-radius:8px;} 
-            .category-item{font-size:0.9em;padding:8px 15px;} 
-            .page-title{font-size:1.5em; letter-spacing: 2px; padding:15px;}
-            .container{grid-template-columns:1fr;gap:20px;} 
-            .card img{height:250px;} 
-            .card-content h3{font-size:1.3em;} 
-            .about-us{padding:50px 15px;} 
-            .about-us h3{font-size:2em;} 
-            .about-us p{font-size:1em;}
-            .nav-auth-buttons .profile-btn { padding: 8px 15px; font-size: 0.9em; }
-            .nav-auth-buttons .sign-up-btn { padding: 8px 15px; font-size: 0.9em; }
-            .footer-content { justify-content: center; text-align: center; }
-            .footer-logo-section { flex: 0 0 100%; margin-bottom: 20px;}
-            .footer-links-group { flex-direction: column; gap: 20px; width: 100%; align-items: center;}
-            .footer-links { width: 100%; }
-        }
-
-      
-
-        /* Custom Styles for Scroll and Card Appearance */
-:root {
-    /* Define the background gradient */
-    --gradient-subtle: linear-gradient(30deg, #ffffff, #eeebeb);
-    --color-blue: #D6EAF8;
-    --color-orange: #FAEBD7;
-    /* Define the scaling for different states */
-    --scale-focused: 1.1;   /* Center Card: Largest */
-    --scale-neighbor: 0.95; /* Immediate Neighbors: Medium */
-    --scale-default: 0.85;  /* All other cards: Smallest */
-    --space-between-cards: 12px;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background: var(--gradient-subtle); 
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; 
-}
-
-/* --- SCROLL CONTAINER SETUP (The "Track") --- */
-.scroll-container {
-    display: flex;
-    overflow-x: scroll;
-    scroll-behavior: smooth; 
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch; 
-    
-    /* HIDE SCROLLBAR */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    .scroll-container::-webkit-scrollbar {
-        display: none;
-    }
-    
-    /* Drastically reduced padding to eliminate empty space */
-    padding: 20px 5px; 
+    margin-left: -15px;
    
-}
-
-.scroll-container::-webkit-scrollbar {
-    display: none;
-}
-
-/* --- FEATURE CARD STYLING (The "Boxes") --- */
-.feature-card {
-    flex: 0 0 auto; /* Prevent cards from shrinking */
-    width: 70vw; 
-    max-width: 320px; 
-    min-height: 200px;
-    margin: 0 var(--space-between-cards); 
-    padding: 30px;
-    background-color: white;
-    border-radius: 16px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
-    text-align: center;
-    
-    /* INITIAL STATE & FAST/SMOOTH TRANSITION */
-    transform: scale(var(--scale-default));
-    /* Use a custom curve for a snappy, smooth feel */
-    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease-out; 
-    
-    scroll-snap-align: center;
-}
-
-/* 1. Focused State (Largest) */
-.feature-card.is-focused {
-    transform: scale(var(--scale-focused));
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); 
-    z-index: 10; 
-    border-color: #080808;
-    
-}
-
-/* 2. Neighbor State (Medium) */
-.feature-card.is-neighbor {
-    transform: scale(var(--scale-neighbor));
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
-    z-index: 5; 
-}
-
-/* --- HEADER ANIMATION (from original request) --- */
-@keyframes slideIn {
-    from {
-        transform: scaleX(0); 
-        opacity: 0;
-    }
-    to {
-        transform: scaleX(1); 
-        opacity: 1;
-    }
-}
-
-.slide-in-animation {
-    transform-origin: center center; 
-    animation: slideIn 1.5s ease-out forwards; /* Changed duration for realistic speed */
-    opacity: 0; 
-}
-
-/* Media query for tablet/desktop views */
-@media (min-width: 768px) {
-    .scroll-container {
-        /* Adjust padding for better desktop centering */
-        padding: 20px 35vw; 
-    }
-    .feature-card {
-        width: 250px; 
-        margin: 0 20px;
-    }
-}
-
-
-
-
-
-/* --------------------------------------------------------------------------------------------------------------- */
-
-/* Basic container for the carousel */
-.image-carousel {
+    color: rgb(44, 44, 44); /* Using your teal for the text so it's readable */
+    letter-spacing: 0.3px;
     position: relative;
-    width: 50%; /* Adjust as needed */
-    height: 300px;
-    max-width: 800px;
-    margin: 70px;
-    overflow: hidden;
-    border-radius: 40px;
-    
-    background-color: rgb(224, 240, 247);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    
-    
+    z-index: 2;
 }
 
-/* Container for the images */
-.carousel-images {
+.social-icons {
     display: flex;
-    width: 100%;
-    aspect-ratio: 16 / 9; /* Modern aspect ratio for a clean look */
+    gap: 15px;
+   
+
+    position: relative;
+    z-index: 2;
 }
 
-/* Individual image styling */
-.carousel-images img {
+.social-icons a { 
+    font-size: 1.1rem; 
+    color: var(--primary-color); 
+    background-color: #2a807a;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover { 
+    color: var(--text-dark);
+    transform: translateY(-2px);
+}
+
+/* Subtle Shimmer for Light Background */
+.social-bar::before {
+    content: ""; 
+    position: absolute; 
+    top: 0; 
+    left: -150%; 
+    width: 40%; 
+    height: 100%;
+    /* Bright white shimmer */
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: shimmer 4s infinite linear;
+    z-index: 1;
+}
+
+/* Responsive tweak for the social bar */
+@media (max-width: 768px) {
+    .social-bar {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 15px 5%;
+    }
+}
+        @keyframes shimmer { 0% { left: -150%; } 100% { left: 150%; } }
+        .owner { font-size: 0.75rem; font-weight: 700; color: #666; font-style: italic; }
+        .social-icons { display: flex; gap: 40px; }
+        .social-icons a { font-size: 1.1rem; color: #444; transition: 0.3s; }
+        .social-icons a:hover { transform: translateY(-3px) scale(1.2); color: var(--primary-color); }
+
+        /* --- HERO CAROUSEL SETTINGS --- */
+.hero-banner {
+    width: 100%;
+    height: 85vh; /* Responsive height */
+    position: relative;
+    overflow: hidden;
+    background: #0a2523; /* Solid AdVitum Dark Teal */
+}
+
+.hero-image-loop {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: none;
+    position: relative;
 }
 
-/* Only the active image is shown */
-.carousel-images img.active-image {
-    display: block; 
+.hero-image-loop img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents image stretching */
+    opacity: 0;
+    /* 12s total: 4s per image (3 images) */
+    animation: medicalFadeLoop 12s infinite; 
 }
 
+/* Staggered timing for the 3 images */
+.hero-image-loop img:nth-child(1) { animation-delay: 0s; }
+.hero-image-loop img:nth-child(2) { animation-delay: 4s; }
+.hero-image-loop img:nth-child(3) { animation-delay: 8s; }
 
-/* --- BEST ARROW STYLING (UPDATED) --- */
-.carousel-arrow {
-    /* Positioning */
+@keyframes medicalFadeLoop {
+    0% { opacity: 0; }
+    10% { opacity: 1; }   /* Smooth fade in */
+    33% { opacity: 1; }   /* Stay visible */
+    43% { opacity: 0; }   /* Smooth fade out */
+    100% { opacity: 0; }
+}
+
+/* --- CENTERED EXPLORE BUTTON --- */
+.hero-overlay {
     position: absolute;
     top: 50%;
-    transform: translateY(-40%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+}
+
+.explore-btn {
+    background: transparent; /* AdVitum Brand Teal */
+    color: #353535;
+    padding: 16px 40px;
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    transition: all 0.4s ease;
+    display: inline-block;
+}
+
+.explore-btn:hover {
+    background: var(--accent);
+    color: #ffffff;
+     border-radius: 10px;
+    border: 1px var(--accent);
+    transform: scale(1.05);
+    backdrop-filter: blur(5px);
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .hero-banner {
+        height: 60vh; /* Shorter for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-banner {
+        height: 50vh; /* Optimized for mobile phones */
+    }
+    .explore-btn {
+        padding: 12px 25px;
+        font-size: 0.85rem;
+    }
+}
+      
+
+        /* --- SCROLL CARDS --- */
+        .scroll-container {
+            display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 24px; padding: 20px 0;
+            scrollbar-width: none; -ms-overflow-style: none;
+        }
+        .scroll-container::-webkit-scrollbar { display: none; }
+        .feature-card { min-width: 320px; flex-shrink: 0; transition: 0.4s; }
+        .feature-card:hover { transform: translateY(-10px); border-color: var(--primary-color); }
+
+        /* --- BENEFITS (YOUR REDESIGN) --- */
+        .benefits-section { background: #f0fdfa; padding: 100px 0; text-align: center; border-radius: 30px; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+        .benefit-card { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0, 167, 157, 0.05); border: 1px solid #e2e8f0; text-align: left; transition: 0.3s; }
+        .benefit-card:hover { border-color: var(--primary-color); transform: translateY(-5px); }
+        .benefit-card i { background: var(--primary-color); color: white; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 15px; font-size: 1.5rem; margin-bottom: 20px; }
+
+        /* --- FOOTER --- */
+        footer { background: #272e3d; color: #ecf0f1; padding: 80px 5% 40px;border-top-left-radius: 30px;border-top-right-radius: 30px; }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 50px; }
+        .footer-logo { font-size: 1.5rem; font-weight: 800; color: var(--primary-color); font-style: italic; margin-bottom: 20px; }
+        .footer-bottom { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: #94a3b8; font-size: 0.85rem; }
+
+        /* --- RESPONSIVE FIXES --- */
+        .stats-grid-responsive { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+
+        @media (max-width: 992px) {
+            .hero-banner { flex-direction: column; text-align: center; padding-top: 140px; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .image-carousel { width: 100%; height: 350px; }
+            .about-detailed { grid-template-columns: 1fr; }
+            #about-us-section > div:first-child { grid-template-columns: 1fr !important; text-align: center; }
+            #about-us-section > div:first-child .about-image { margin: 0 auto; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links-main {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 100%;
+                background: white; flex-direction: column; align-items: center; justify-content: center;
+                gap: 40px; transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0); z-index: 10000;
+            }
+            .nav-links-main.active { right: 0; }
+            .social-bar { flex-direction: column; gap: 15px; height: auto; padding: 20px; text-align: center; }
+        }
+
+
+
+/* ----------------------------------------------------------- */
+
+
+:root {
+    --card-w: 220px;      /* Smaller base width for a cleaner look */
+    --card-scale: 1.25;   /* Middle card grows 25% */
+    --gap: 40px;          /* Physical space between cards */
+    --accent: #00A79D;    /* AdVitum Teal */
+}
+
+/* 1. The Scroll Container */
+.scroll-container {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    /* Centers the card by offsetting half the screen minus half the card width */
+    padding: 80px calc(50% - (var(--card-w) / 2));
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.scroll-container::-webkit-scrollbar { display: none; }
+
+/* 2. The Feature Card */
+.feature-card {
+    min-width: var(--card-w);
+    flex: 0 0 var(--card-w);
+    scroll-snap-align: center;
+    /* Margin prevents any overlap during the scaling transition */
+    margin: 0 var(--gap); 
+    perspective: 1000px;
+    will-change: transform, opacity;
+}
+
+/* 3. The Inner Box - Default Small State */
+.inner-square {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 35px; 
+    padding: 35px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
     
-    /* Shape and Size */
-    width: 30px; /* Larger hit area */
-    height: 30px; /* Larger hit area */
-    border-radius: 50%; /* Perfect circle */
-    
-    /* Visuals */
-    background-color: rgb(248, 243, 243); /* Semi-transparent White background */
-    color: var(--primary-color); /* Dark arrow color */
-    border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-    
-    /* Text/Icon */
-    font-size: 20px; /* Smaller icon inside the large button */
-    font-weight: bold;
-    cursor: pointer;
-    
-    /* Centering the icon inside the button */
+    /* Side cards stay small (80% size) and faded */
+    transform: scale(0.8); 
+    opacity: 0.4;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 4. The 'Middle' Focus State */
+.feature-card.is-active .inner-square {
+    /* Middle card grows to 125% of its base size */
+    transform: scale(var(--card-scale));
+    opacity: 1;
+    border: 1px solid rgba(0, 167, 157, 0.3);
+    box-shadow: 0 25px 50px rgba(0, 167, 157, 0.15);
+}
+
+/* 5. Typography & Content */
+.icon-blob {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    /* Transitions */
-    transition: all 0.3s ease-in-out;
-    z-index: 10;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
 }
 
-.carousel-arrow:hover {
-    background-color: var(--primary-color); /* Primary color on hover */
-    color: white; /* White arrow on hover */
-    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
-    transform: translateY(-50%) scale(1.05); /* Slight lift and scale */
+.feature-card.is-active .icon-blob {
+    transform: translateY(-5px);
 }
 
-.left-arrow {
-    left: 15px; /* Move slightly further from the edge */
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 8px;
 }
 
-.right-arrow {
-    right: 15px; /* Move slightly further from the edge */
+.card-text {
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.4;
 }
-/* ------------------------------------- */
 
+/* 6. Responsive Fix for Mobile */
+@media (max-width: 640px) {
+    :root {
+        --card-w: 180px; /* Even smaller for mobile screens */
+        --gap: 20px;
+    }
+}
 
-/* Styling for the Indicators (1, 2, 3) */
-.carousel-indicators {
+/* 5. Modern Nav Buttons */
+.nav-btn {
     position: absolute;
-    bottom: 20px;
+    top: 55%;
+    transform: translateY(-50%);
+    width: 58px;
+    height: 58px;
+    background: #ffffff;
+    color: #1a1a1a;
+    border-radius: 50%;
+    z-index: 100;
+    border: none;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-55%) scale(1.1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    :root { --card-w: 240px; }
+    .nav-btn { width: 48px; height: 48px; }
+    .nav-btn.left { left: 10px; }
+    .nav-btn.right { right: 10px; }
+}
+
+/* Desktop spacing */
+@media (min-width: 769px) {
+    .nav-btn.left { left: -30px; }
+    .nav-btn.right { right: -30px; }
+}
+
+/* ----------------------------------below experience */
+
+/* Modern Card Styling */
+.stat-card {
+    background: white;
+    border-radius: 35px;
+    padding: 30px;
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+    transition: transform 0.4s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: #3b82f6;
+}
+
+.stat-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.stat-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Pulse effect for a "live" feel */
+.pulse-animation {
+    animation: iconPulse 3s infinite;
+}
+
+@keyframes iconPulse {
+    0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.2); }
+    70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+/* Pure CSS Counter Logic */
+.stat-number-css {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    line-height: 1;
+}
+
+/* Animation for Years (Target: 15) */
+.count-years::after {
+    content: "0";
+    animation: counterYears 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Animation for Partners (Target: 2500) */
+/* Note: For high numbers, CSS usually shows a few steps to feel real */
+.count-partners::after {
+    content: "0";
+    animation: counterPartners 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes counterYears {
+    0% { content: "0"; }
+    20% { content: "4"; }
+    40% { content: "8"; }
+    60% { content: "11"; }
+    80% { content: "14"; }
+    100% { content: "15"; }
+}
+
+@keyframes counterPartners {
+    0% { content: "0"; }
+    20% { content: "450"; }
+    40% { content: "1100"; }
+    60% { content: "1850"; }
+    80% { content: "2300"; }
+    100% { content: "2500"; }
+}
+
+/* Ensure the numbers render correctly in all browsers */
+@supports (font-variant-numeric: tabular-nums) {
+    .stat-number-css {
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+
+@media(max-width:900px) { /* Changed from 768px to 900px to match Products page */
+    .menu-toggle { display: flex; }
+    .nav-links-main {
+        position: absolute; /* Changed from fixed */
+        top: 100%; 
+        left: 0; 
+        width: 100%; 
+        background: white;
+        flex-direction: column; 
+        align-items: center; 
+        padding: 20px 0;
+        display: none; /* Changed from right: -100% */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        height: auto; /* Removed 100vh */
+    }
+    .nav-links-main.active { 
+        display: flex; 
+    }
+    nav.scrolled .nav-links-main { 
+        background: var(--primary-color); 
+    }
+}
+
+
+  
+/* --- CREATIVE "WHY CHOOSE US" SECTION --- */
+#about-us-section {
+    padding: 100px 5%;
+    background-color: white; /* Original soft background */
+    
+    font-family: 'Inter', sans-serif;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #fafafa;
+}
+
+/* Intro Text Styling */
+.about-intro {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.about-intro h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Decorative underline for the main heading */
+.about-intro h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: #00A79D;
+   
+    border-radius: 2px;
+}
+
+.about-intro p {
+    font-size: 0.95rem;
+    color: #2b2b2b; /* */
+    font-weight: 500;
+    font-size: medium;
+    line-height: 2;
+    max-width: 800px;
+    margin: 25px auto 0;
+}
+
+/* --- THE CREATIVE BOX GRID --- */
+.benefits-grid {
+    display: grid;
+    /* Creates a 3-column layout that becomes 1 column on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.benefit-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 167, 157, 0.1);
+    border-left: 5px solid #00A79D; /* Creative Brand Accent */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Premium Hover Effect: Card expands and shadow deepens */
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 167, 157, 0.12);
+    background: #ffffff;
+}
+
+/* Background Number Decoration (01, 02, 03) */
+.benefit-card::before {
+    content: attr(data-number);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(0, 167, 157, 0.05);
+    line-height: 1;
+}
+
+.benefit-card h3 {
+    font-size: 1.1rem;
+    color: #2c3e50; /* */
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Custom Bullet List Styling */
+.benefit-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.benefit-card ul li {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 12px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #555555;
+}
+
+/* The Play Button Icon Replacement */
+.benefit-card ul li span.icon {
+    color: #00A79D; /* */
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
+
+.benefit-card ul li strong {
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Responsive Fix for Mobile */
+@media (max-width: 600px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-intro h2 {
+        font-size: 1.8rem;
+    }
+}
+/* --- IMPACT SECTION WITH CREATIVE BACKGROUND --- */
+#impact-section {
+    padding: 100px 5%;
+    position: relative;
+    overflow: hidden;
+    /* Maintain the clean background from image_15.png */
+    background: radial-gradient(circle at 10% 20%, rgba(0, 167, 157, 0.05) 0%, #f8fafb 90%);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Decorative background blur circles - Kept subtle */
+#impact-section::before, #impact-section::after {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(0, 167, 157, 0.03);
+    filter: blur(80px);
+    z-index: 0;
+}
+
+#impact-section::before { top: -100px; right: -100px; }
+#impact-section::after { bottom: -150px; left: -100px; }
+
+.container-impact {
+    position: relative;
+    z-index: 1; /* Keeps content above background effects */
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Feature Grid */
+.impact-points-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    flex: 1.2;
+}
+
+/* --- ELEVATED IMPACT CARDS --- */
+.impact-card {
+    /* Solid background works better for deep elevation than transparency */
+    background: #ffffff; 
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 167, 157, 0.05); /* Very subtle border */
+    
+    /* --- KEY FIX: NEW DEEP DEFAULT SHADOW --- */
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.03), /* Soft spread */
+        0 2px 4px rgba(0, 0, 0, 0.02), /* Closer definition */
+        inset 0 1px 1px rgba(255, 255, 255, 0.5); /* Internal rim light */
+
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+}
+
+/* Card lifts up further, shadow intensifies and spreads */
+.impact-card:hover {
+    /* --- KEY FIX: DEEP TRANSFORM LIFT --- */
+    transform: translateY(-12px); /* Card lifts higher */
+    border-color: #00A79D; /* Brand accent */
+    
+    /* --- KEY FIX: NEW HOVER DEEP SHADOW --- */
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.08), /* Deep, soft primary shadow */
+        0 10px 20px rgba(0, 167, 157, 0.05), /* Subtle teal colored shadow */
+        inset 0 1px 1px rgba(255, 255, 255, 0.9); /* Sharper top-edge light */
+}
+
+/* Title Styling */
+.impact-card strong {
+    color: #1a202c; /* Title color from image_15.png */
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+/* Teal Icon Circle */
+.impact-card strong::before {
+    content: '→';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: #00A79D; /* AdVitum signature teal */
+    color: white;
+    font-size: 0.7rem;
+    border-radius: 50%;
+}
+
+/* Body Text Styling */
+.impact-card span {
+    font-size: 0.85rem;
+    color: #5f6c80; /* Body text color from image_15.png */
+    line-height: 1.6;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 992px) {
+    .impact-points-grid { grid-template-columns: 1fr; }
+}
+
+/* experience and all  */
+/* --- FULL SECTION STYLING --- */
+.stats-section {
+    background: linear-gradient(135deg, #08dbcd 0%, #2a807a 100%);
+    padding: 10px;
+    border-radius: 30px;
+    font-family: 'Inter', sans-serif;
+    margin: 40px auto;
+    max-width: 1300px;
+}
+
+.stats-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Space for bubbles to grow */
+}
+
+/* --- THE 3D MEDICAL BUBBLE --- */
+.stat-card {
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Clips the dark hover overlay to the circle */
+}
+
+/* THE BUBBLE SHINE (Specular Highlight) */
+.stat-card::before {
+    content: "";
+    position: absolute;
+    top: 12%;
+    left: 15%;
+    width: 35px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    filter: blur(5px);
+    transform: rotate(-30deg);
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* --- DEFAULT STATE: THE NUMBER --- */
+.stat-content {
+    text-align: center;
+    transition: all 0.4s ease;
+    z-index: 2;
+    opacity: 1;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    display: block;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+/* --- HOVER STATE: THE DESCRIPTION --- */
+.stat-desc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a2523 !important; /* Dark solid teal for 100% visibility */
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    font-weight: 500;
+    
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    transition: all 0.4s ease-in-out;
+    z-index: 5;
+}
+
+/* --- INTERACTION LOGIC --- */
+
+/* 1. Bubble Grows Big */
+.stat-card:hover {
+    transform: scale(1.25); 
+    z-index: 10;
+    border-color: #ffffff;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* 2. Number Disappears */
+.stat-card:hover .stat-content {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+/* 3. Text Becomes Visible */
+.stat-card:hover .stat-desc {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    .stats-section { padding: 60px 20px; }
+    .stat-card { width: 140px; height: 140px; }
+    .stat-number { font-size: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    .stats-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .stat-card { width: 130px; height: 130px; }
+    .stat-card:hover { transform: scale(1.1); } /* Smaller expansion for mobile screens */
+    .stat-desc { font-size: 0.65rem; padding: 10px; }
+}
+
+/* certificates  */
+/* --- CERTIFICATION SECTION --- */
+.cert-section {
+    padding: 80px 5%;
+    background: #f8fafb;
+    font-family: 'Inter', sans-serif;
+}
+
+.cert-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cert-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1a202c;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- RESPONSIVE GRID --- */
+.cert-grid {
+    display: grid;
+    /* Desktop: 4 columns | Tablet: 2 columns | Mobile: 2 columns */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    justify-items: center;
+}
+
+/* --- CREATIVE CERT CARD --- */
+.cert-card {
+    background: white;
+    width: 100%;
+    max-width: 220px;
+    aspect-ratio: 1 / 1; /* Keeps them perfectly square */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px solid rgba(0, 167, 157, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+/* Hover: Lift and Glow */
+.cert-card:hover {
+    transform: translateY(-10px);
+    border-color: #00A79D;
+    box-shadow: 0 20px 40px rgba(0, 167, 157, 0.1);
+}
+
+/* The Icon Wrapper */
+.cert-icon-bg {
+    width: 90px;
+    height: 90px;
+    background: #f0f7f7;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.cert-card:hover .cert-icon-bg {
+    background: rgba(0, 167, 157, 0.1);
+}
+
+.cert-icon-bg img {
+    max-width: 70px;
+    max-height: 70px;
+    object-fit: contain;
+    filter: grayscale(100%); /* Sterile look by default */
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.cert-card:hover img {
+    filter: grayscale(0%); /* Brings color on hover */
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.cert-name {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #2d3748;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- MOBILE & TABLET RESPONSIVENESS --- */
+
+@media (max-width: 1024px) {
+    .cert-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row for tablets */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .cert-section {
+        padding: 50px 15px;
+    }
+    
+    .cert-grid {
+        grid-template-columns: repeat(2, 1fr); /* FORCED 2 PER ROW ON MOBILE */
+        gap: 15px;
+    }
+    
+    .cert-card {
+        padding: 20px 10px;
+    }
+    
+    .cert-icon-bg {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .cert-icon-bg img {
+        max-width: 50px;
+    }
+    
+    .cert-name {
+        font-size: 0.75rem;
+    }
+}
+
+/* --- FOOTER MAIN STYLING --- */
+.site-footer {
+    background: #0a2523;
+    color: #e8f6f5;
+    border-top: 6px solid #00A79D;
+    padding: 80px 0 30px;
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: grid;
+    /* Desktop: 4 Columns */
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+/* --- LOGO & TEXT --- */
+.footer-logo {
+    height: 55px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 20px;
+}
+
+.footer-col p {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: #bcd6d4;
+    margin-bottom: 20px;
+}
+
+/* --- HEADINGS & LINKS --- */
+.footer-col h4 {
+    color: #00A79D;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.footer-col ul { list-style: none; padding: 0; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul li a {
+    color: #bcd6d4;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+/* --- CONTACT LIST --- */
+.contact-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: #bcd6d4;
+    margin-bottom: 15px;
+}
+
+.contact-list i { color: #00A79D; width: 18px; }
+
+/* --- CENTERED SOCIAL LINKS (CREATIVE) --- */
+.social-centered-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centers horizontal */
+    margin-top: 60px; /* Big top margin as requested */
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    
+    justify-content: center;
+    border-radius: 12px;
+    color: #3a3a3a;
+    border: 1px solid rgba(0, 167, 157, 0.2);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    background: #ffffff;
+    width: 40px;
+    height: 40px;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 167, 157, 0.3);
+}
+
+/* --- RESPONSIVENESS --- */
+
+/* Tablet (2x2 Grid) */
+@media (max-width: 1024px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 50px 30px;
+    }
+}
+
+/* Mobile (Single Column & Center Everything) */
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-logo { margin: 0 auto 20px; }
+
+    .contact-list li {
+        justify-content: center;
+    }
+
+    .social-centered-wrapper {
+        margin-top: 40px;
+    }
+}
+
+
+/*---------------------- */
+.download-section {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    background: #f8fafc;
+}
+
+.download-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.download-card:hover {
+    transform: translateY(-5px);
+    border-color: #00A79D;
+}
+
+/* Icon Styling */
+.pdf-icon {
+    width: 60px;
+    height: 60px;
+    background: #fff1f2; /* Soft red for PDF */
+    color: #e11d48;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+
+/* Text Content */
+.download-info {
+    flex-grow: 1;
+}
+
+.download-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 4px 0;
+}
+
+.download-subtitle {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Action Buttons */
+.download-actions {
     display: flex;
     gap: 10px;
-    z-index: 15;
 }
 
-.indicator {
-    display: inline-block;
-    width: 23px;
-    height: 23px;
-    line-height: 28px;
-    text-align: center;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #333;
-    font-size: 10px;
-    font-weight: bold;
-    text-align: center;
+.btn-view, .btn-download {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.btn-view {
+    color: #64748b;
+    background: #f1f5f9;
+}
+
+.btn-view:hover {
+    background: #e2e8f0;
+}
+
+.btn-download {
+    background: #00A79D;
+    color: #ffffff;
+    display: flex;
     align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    gap: 8px;
 }
 
-.indicator:hover {
-    background-color: white;
+.btn-download:hover {
+    background: #008f86;
+    box-shadow: 0 4px 12px rgba(0, 167, 157, 0.2);
 }
 
-/* Active indicator style */
-.indicator.active-indicator {
-    background-color: var(--primary-color); /* Primary color */
-    color: white;
-    font-size: 12px;
-    width:26px;
-    height: 26px;
-    border: 2px solid white;
+/* Responsive Mobile View */
+@media (max-width: 480px) {
+    .download-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .download-actions {
+        width: 100%;
+        flex-direction: column;
+    }
 }
-
-
-
-
-/* 🌿 SOCIAL BAR WITH MERGE + SHIMMER ANIMATION */
-.social-bar {
-  --primary-color: #b3e0ff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-    background-image:
-        /* 1. Main Diagonal Color Section */
-        linear-gradient(
-            30deg,
-            white 45%, /* Starts as white */
-            rgb(234, 241, 241) 40.1%, /* Sharp transition to accent color */
-            var(--accent-color) 50%,
-            rgb(234, 241, 241) 100% /* Blends to primary color at the far edge */
-        );
-
-  padding: 6px 0;
-  border-radius: 12px;
-  height: 38px;
-  margin-top: 85px;
-  padding-right: 10px;
-  position: relative;
-  overflow: hidden;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* ✨ Shimmer effect moving once */
-.social-bar::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.6),
-    transparent
-  );
-  animation: shimmer 2.5s ease-out 0.5s forwards;
-  pointer-events: none;
-}
-
-/* ICONS */
-.social-bar a {
-  color: #2f2f2f;
-  font-size: 18px;
-  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
-  text-decoration: none;
-  opacity: 0;
-  transform: translateY(20px) scale(0.9);
-  animation: floatIn 1.2s ease forwards;
-}
-
-/* Sequential delays for merge effect */
-.social-bar a:nth-child(1) { animation-delay: 0.3s; }
-.social-bar a:nth-child(2) { animation-delay: 0.5s; }
-.social-bar a:nth-child(3) { animation-delay: 0.7s; }
-.social-bar a:nth-child(4) { animation-delay: 0.9s; }
-.social-bar a:nth-child(5) { animation-delay: 1.1s; }
-.social-bar a:nth-child(6) { animation-delay: 1.3s; }
-
-/* 🌈 Hover Effects (Glow + Pop) */
-.social-bar a:hover {
-  transform: scale(1.3);
-  text-shadow: 0 0 12px currentColor;
-}
-
-/* Individual Hover Colors */
-.linkedin:hover { color: #0A66C2; }
-.whatsapp:hover { color: #25D366; }
-.instagram:hover { color: #E1306C; }
-.facebook:hover { color: #1877F2; }
-.phone:hover { color: #00bcd4; }
-.gmail:hover { color: #EA4335; }
-
-/* 🎬 ANIMATIONS */
-@keyframes floatIn {
-  0% {
-    opacity: 0;
-    transform: translateY(25px) scale(0.85);
-    filter: blur(6px);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(-4px) scale(1.05);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* One-time shimmer line */
-@keyframes shimmer {
-  0% { left: -150%; }
-  100% { left: 150%; }
-}
-
-
-.owner{
-    color: #696969;
-    font-style: italic;
-    font-weight: 800;
-    text-align: start;
-    width: 100%;
-    font-size: .7rem;
-    margin-left: 10px;
-}
-
 
     </style>
-
 </head>
 
 <body>
-
-
 {% load static %}
-
-
 <nav id="navbar">
-    <div class="logo-section">
-        <img src="{% static 'logo1.png' %}" alt="MED-CARE Logo" class="main-logo-image">
-    <div>
-          <div class="logo">AdVitum</div>
-          <div class="healthcare">Health Care</div>
+    <div class="logo-section" onclick="location.href='/'">
+        <img src="{% static 'new_logo.png' %}" alt="Logo" class="main-logo-image">
+       
     </div>
-        
+
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
     </div>
-    <ul class="nav-links-main">
+
+    <ul class="nav-links-main" id="nav-list">
         <li><a href="{% url 'home' %}" class="active-link">Home</a></li>
-        
-        <li><a href="#itemsContainer">Products</a></li>
-        <li><a href="#about-us-section">About</a></li>
-        <li><a href="#contact-section">Contact</a></li>
-        
+        <li><a href="{% url 'products' %}">Products</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
     </ul>
 </nav>
 
 <div class="social-bar">
-    <p class="owner">LOCATION :- [ City:- Sedrana | Ta:- Sidhpur | Dist:- Patan ]  / contact :- 8780929056</p>
-  <a href="https://www.linkedin.com/in/mahi-singh-b772382b4" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
-  <a href="https://wa.me/9427653486" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://www.instagram.com/ali_masi_440" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
-  <a href="https://www.facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
-  <a href="#" class="gmail"><i class="fas fa-envelope"></i></a>
+   <p class="owner">
+  <i class="fas fa-envelope"></i>  info@advitumhealthcare.com  || 
+  <i class="fas fa-phone"></i>  +91 9898265440
+</p>
+    <div class="social-icons">
+<a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://wa.me/9898265440" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
+  <i class="fa-brands fa-instagram"></i>
+</a>
+<a href="https://www.facebook.com/share/1QCwCrvfFL" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="https://x.com/AdVitumHC" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
 </div>
-
-
-
-
 
 <div class="hero-banner">
-    <div class="hero-background"></div>
-    <div class="hero-content">
-        <h1>Empowering Modern Healthcare</h1>
-        <p>Reliable medical equipment and supplies designed for hospitals, clinics, and care centers worldwide.</p>
-        <a href="#itemsContainer" class="explore-btn">EXPLORE PRODUCTS</a>
+    <div class="hero-image-loop">
+        <img src="{% static 'add11.png' %}" alt="Medical Solutions 1">
+        <img src="{% static 'add22.png' %}" alt="Medical Solutions 2">
+        <img src="{% static 'add4.png' %}" alt="Medical Solutions 4">
     </div>
+
+    <div class="hero-overlay" style="margin-top: 200px; margin-left: 300px;">
+        <a href="{% url 'products' %}" class="explore-btn">EXPLORE >>></a>
+    </div>
+</div>
+
+<section id="about-us-section">
+  <div class="about-container">
     
+    <div class="about-intro">
+      <h2 style="font-size:30px; color: #494949; font-weight: 700; padding: 10px;">Why Choose Us</h2>
+      <p>AdVitum Healthcare delivers certified, sterile, and globally compliant surgical and medical disposable solutions trusted across international markets. Backed by ISO 13485 & CE certifications, advanced quality systems, and strong export expertise, we provide reliable supply, custom branding flexibility, and responsive support—ensuring long-term value for our global partners.</p>
+    </div>
 
-    <div class="image-carousel">
-        <button class="carousel-arrow left-arrow">&#10094;</button>
-        <div class="carousel-images">
-            <img src="{% static 'add2.png' %}" alt="Medical Equipment 1" class="active-image">
-            <img src="{% static 'add1.png' %}" alt="Medical Equipment 2">
-            <img src="{% static 'add2.png' %}" alt="Medical Equipment 3">
+    <div class="benefits-grid">
+      
+      <div class="benefit-card">
+        <h3>Certified Standards</h3>
+        <ul>
+          <li><span class="icon">&#9654;</span><div><strong>100% Sterile & Safe Products</strong> Manufactured and supplied under strict quality and safety protocols.</div></li>
+          <li><span class="icon">&#9654;</span><div><strong>ISO 13485 & CE Certified Portfolio</strong> Internationally accepted standards for seamless market entry.</div></li>
+        </ul>
+      </div>
+
+      <div class="benefit-card">
+        <h3>Precision Quality</h3>
+        <ul>
+          <li><span class="icon">&#9654;</span><div><strong>Advanced Manufacturing & Quality Testing</strong> Precision-controlled production with multi-level inspection processes.</div></li>
+          <li><span class="icon">&#9654;</span><div><strong>Private Label & Custom Packaging Solutions</strong> Tailored branding to meet regional and distributor requirements.</div></li>
+        </ul>
+      </div>
+
+      <div class="benefit-card">
+        <h3>Export Expertise</h3>
+        <ul>
+          <li><span class="icon">&#9654;</span><div><strong>Proven Global Export Expertise</strong> Efficient logistics and regulatory understanding across Africa, the Middle East, and Europe.</div></li>
+          <li><span class="icon">&#9654;</span><div><strong>Dedicated & Responsive Customer Support</strong> Professional communication focused on long-term partnerships.</div></li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+<section id="impact-section">
+    <div class="container-impact">
+        
+        <div style="flex: 1; min-width: 320px;">
+            <span style="display: inline-block; padding: 6px 18px; border-radius: 50px; background: #00A79D; color: #fff; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,167,157,0.3);">Our Impact</span>
+            <h2 style="font-size: 3.2rem; font-weight: 900; color: #1a202c; line-height: 1.1; margin-bottom: 25px;">Driving the Future of<br><span style="color: #00A79D;">Global Healthcare</span></h2>
+            <p style="font-size: 1.1rem; color: #6b7280; line-height: 1.8;">AdVitum combines logistical expertise with a relentless focus on quality to deliver reliability to clinics and hospitals worldwide.</p>
         </div>
-        <button class="carousel-arrow right-arrow">&#10095;</button>
 
-        <div class="carousel-indicators">
-            <span class="indicator active-indicator">1</span>
-            <span class="indicator">2</span>
-            <span class="indicator">3</span>
-        </div>
-    </div>
-</div>
-
-<div class="search-container-main">
-    <input type="search" id="heroSearchInput" placeholder="Search medical devices, supplies, or consumables..." class="search-input-hero" aria-label="Search medical items"/>
-    <div class="search-icon-hero"><i class="fa-solid fa-magnifying-glass"></i></div>
-</div>
-
-<div class="sticky-search-wrapper" id="stickySearchWrapper">
-    <div  style="padding: 0 15px;">
-        <input type="search" id="stickySearchInput" placeholder="Search medical devices, supplies, or consumables..." aria-label="Search medical items sticky"/>
-         </div>
-</div>
-
-<div class="categories-container" id="categoryList" role="navigation" aria-label="Product categories">
-    <div class="category-item {% if not request.GET.category %}active{% endif %}">
-        <a href="{% url 'home' %}" style="text-decoration: none; color: inherit;">All Products</a>
-    </div>
-    {% for i in category %}
-    <div class="category-item {% if request.GET.category == i.id|stringformat:"s" %}active{% endif %}">
-        <a href="{% url 'home' %}?category={{ i.id }}" style="text-decoration: none; color: inherit;">
-            {{ i.name | default:"Category Name" }} 
-        </a>
-    </div>
-    {% endfor %}
-</div>
-
-
-<h1 class="page-title">Featured Medical Supplies & Equipment</h1>
-<div class="main-container" role="main">
-    
-    <div class="container" id="itemsContainer">
-        {% for item in items %}
-            <div class="card">
-                <img src="{{ item.image.url }}" alt="{{ item.name }}" />
-                <div class="card-content">
-                    <h3> {{ item.name | default:"Essential Medical Kit" }}</h3>
-                    <p>{{ item.description | default:"High-quality, certified medical product for professional use."  }}</p>
-                  
-                  
-                </div>
-            </div>
-
-        {% empty %}
-            <p style="grid-column: 1 / -1; text-align: center; padding: 50px; font-size: 1.2em; color: var(--text-light);">
-                <i class="fa-solid fa-triangle-exclamation" style="color: #e74c3c; margin-right: 10px;"></i>
-                No medical products available at this time. Please check back later!
-            </p>
-        {% endfor %}
-    </div>
-</div>
-
-<div id="toast" class="toast-message"></div>
-
-<!-- start -->
-
-
-    <!-- NEW WRAPPER DIV: All layout/spacing classes are now here -->
-    <div class="min-h-screen p-4 md:p-12 flex flex-col items-center"  id="about-us-section">
-
-        <header class="text-center mb-10 w-full max-w-4xl slide-in-animation"  >
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-2">
-                AdVitum: Our Core Commitments
-            </h1>
-            <p class="text-gray-500 max-w-2xl mx-auto">
-                Welcome to AdVitum, your global source for trusted medical equipment and supplies. We define our service through these six pillars of excellence.
-            </p>
-        </header>
-
-        <!-- Scrolling Feature Container Wrapper for arrows -->
-        <!-- Added relative positioning for arrow placement -->
-        <div class="relative w-full max-w-6xl mx-auto px-10 md:px-0">
+        <div class="impact-points-grid">
             
-            <!-- Left Arrow Navigation -->
-            <button id="nav-left" class="absolute hidden md:block left-[-60px] top-1/2 transform -translate-y-1/2 z-10 p-4 rounded-full bg-white shadow-xl transition duration-300 hover:scale-110 hover:bg-gray-50 text-gray-700 disabled:opacity-30 disabled:cursor-not-allowed" aria-label="Scroll left">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="var(--primary-color)">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-
-            <!-- Scrolling Feature Container -->
-            <div id="card-container" class="scroll-container w-full py-6 md:py-10">
-
-                <!-- Card 1: Global Reach (Blue Theme) -->
-                <div class="feature-card rounded-2xl bg-white border border-gray-100 flex flex-col p-6 text-gray-700">
-                    <div class="p-4 rounded-full w-16 h-16 bg-[var(--color-blue)] mb-4 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#007ACC]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5a2.5 2.5 0 002.5 2.5h1a2.5 2.5 0 012.5 2.5v1a2.5 2.5 0 002.5 2.5h1a2.5 2.5 0 012.5 2.5v1.5M16 8.5h-1A2.5 2.5 0 0012.5 6v-1A2.5 2.5 0 0115 3h1a2.5 2.5 0 002.5-2.5V.5"></path>
-                        </svg>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-2 text-gray-800">Global Reach</h4>
-                    <p class="text-sm">Delivering reliable, certified medical products and swift logistics to institutions and professionals across the globe.</p>
-                </div>
-
-                <!-- Card 2: Certified Quality (Orange Theme) -->
-                <div class="feature-card rounded-2xl bg-white border border-gray-100 flex flex-col p-6 text-gray-700">
-                    <div class="p-4 rounded-full w-16 h-16 bg-[var(--color-orange)] mb-4 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#FF9800]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.236 9 11.664 5.176-1.428 9-6.073 9-11.664-.083-1.412-.325-2.825-.76-4.21"></path>
-                        </svg>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-2 text-gray-800">Certified Quality</h4>
-                    <p class="text-sm">We maintain the highest standards and certifications for all products, ensuring quality and safety for every patient and clinician.</p>
-                </div>
-
-                <!-- Card 3: Specialized Focus (Blue Theme) -->
-                <div class="feature-card rounded-2xl bg-white border border-gray-100 flex flex-col p-6 text-gray-700">
-                    <div class="p-4 rounded-full w-16 h-16 bg-[var(--color-blue)] mb-4 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#007ACC]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-1a5 5 0 115 5h3a4 4 0 11-4 4v-11a5 5 0 00-5-5z"></path>
-                        </svg>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-2 text-gray-800">Specialized Focus</h4>
-                    <p class="text-sm">We specialize in disposable consumables, advanced diagnostic tools, and essential protective equipment to meet critical needs.</p>
-                </div>
-
-                <!-- Card 4: Client Partnership (Orange Theme) -->
-                <div class="feature-card rounded-2xl bg-white border border-gray-100 flex flex-col p-6 text-gray-700">
-                    <div class="p-4 rounded-full w-16 h-16 bg-[var(--color-orange)] mb-4 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#FF9800]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M12 10a3 3 0 100-6 3 3 0 000 6zm-7 6.5A5.002 5.002 0 0112 14a5.002 5.002 0 017-2.5"></path>
-                        </svg>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-2 text-gray-800">Client Partnership</h4>
-                    <p class="text-sm">We are dedicated partners to healthcare professionals, offering unparalleled support and swift responses for critical supply needs.</p>
-                </div>
-
-                <!-- Card 5: Safety & Compliance (Blue Theme) -->
-                <div class="feature-card rounded-2xl bg-white border border-gray-100 flex flex-col p-6 text-gray-700">
-                    <div class="p-4 rounded-full w-16 h-16 bg-[var(--color-blue)] mb-4 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#007ACC]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.236 9 11.664 5.176-1.428 9-6.073 9-11.664-.083-1.412-.325-2.825-.76-4.21"></path>
-                        </svg>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-2 text-gray-800">Safety & Compliance</h4>
-                    <p class="text-sm">Our mission is dedicated to upholding quality, safety, and strict compliance standards for superior patient care outcomes.</p>
-                </div>
-                
-                <!-- Card 6: Supply Chain Swiftness (Orange Theme) -->
-                <div class="feature-card rounded-2xl bg-white border border-gray-100 flex flex-col p-6 text-gray-700">
-                    <div class="p-4 rounded-full w-16 h-16 bg-[var(--color-orange)] mb-4 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#FF9800]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-2 text-gray-800">Supply Chain Swiftness</h4>
-                    <p class="text-sm">We ensure rapid logistics and guaranteed delivery efficiency, getting critical supplies to you exactly when and where they are needed.</p>
-                </div>
-
+            <div class="impact-card">
+                <strong>Global Reach</strong>
+                <span>Supporting healthcare providers across international markets.</span>
             </div>
-            <!-- End Scroll Container -->
 
-            <!-- Right Arrow Navigation -->
-            <button id="nav-right" class="absolute hidden md:block right-[-60px] top-1/2 transform -translate-y-1/2 z-10 p-4 rounded-full bg-white shadow-xl transition duration-300 hover:scale-110 hover:bg-gray-50 text-gray-700 disabled:opacity-30 disabled:cursor-not-allowed" aria-label="Scroll right">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="var(--primary-color)">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width=".8" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
+            <div class="impact-card">
+                <strong>Swift Logistics</strong>
+                <span>Efficient global network ensuring timely, secure deliveries.</span>
+            </div>
+
+            <div class="impact-card">
+                <strong>Quality Assured</strong>
+                <span>Strict quality control meeting ISO and CE standards.</span>
+            </div>
+
+            <div class="impact-card">
+                <strong>Newest Technology</strong>
+                <span>Advanced manufacturing for consistent medical performance.</span>
+            </div>
+
+            <div class="impact-card">
+                <strong>High Satisfaction</strong>
+                <span>Trusted for professional service and dependable supply.</span>
+            </div>
+
+            <div class="impact-card">
+                <strong>Wide Range</strong>
+                <span>Comprehensive portfolio tailored for diverse needs.</span>
+            </div>
 
         </div>
-        <!-- End Scroll Container Wrapper -->
     </div>
-    <!-- End NEW WRAPPER DIV -->
+</section>
+   
 
+</section>
 
-    <!-- end here -->
-
-<section class="contact-info page-section" id="contact-section" aria-labelledby="contact-title">
-    <div class="main-container">
-        <h3 id="contact-title" style="text-shadow: none;">Contact Us</h3>
-        <p style="font-size: 1.1em; max-width: 700px; margin: 0 auto 40px; color: var(--text-dark);">We're here to help with your orders, technical support, and partnership inquiries.</p>
-        <div class="contact-details">
-            <div>
-                <h4><i class="fa-solid fa-phone"></i> Sales Support</h4>
-                <p>Call us for orders and pricing.</p>
-                <a href="tel:+911234567890">+91 123 456 7890</a>
+<!-- STATS CARDS SECTION -->
+<section class="stats-section">
+    <div class="stats-container">
+        
+        <div class="stat-card">
+            <div class="stat-content">
+                <span class="stat-number">15+</span>
+                <p class="stat-label">Years Experience</p>
             </div>
-            <div>
-                <h4><i class="fa-solid fa-envelope"></i> General Inquiry</h4>
-                <p>Email our customer service team.</p>
-                <a href="mailto:info@medcare.com">info@medcare.com</a>
+            <p class="stat-desc">Proven industry & export leadership through our backbone company.</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-content">
+                <span class="stat-number">20+</span>
+                <p class="stat-label">Product Segments</p>
             </div>
-            <div>
-                <h4><i class="fa-solid fa-location-dot"></i> Our Office</h4>
-                <p>AdVitum Global HQ</p>
-                <p>101 Medical Way, Health City, 90001</p>
+            <p class="stat-desc">Comprehensive surgical & medical disposable solutions for global needs.</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-content">
+                <span class="stat-number">10+</span>
+                <p class="stat-label">Countries</p>
+            </div>
+            <p class="stat-desc">Established presence across international healthcare markets.</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-content">
+                <span class="stat-number">1,000+</span>
+                <p class="stat-label">Global Partnerships</p>
+            </div>
+            <p class="stat-desc">Trusted by distributors, importers, and healthcare buyers worldwide.</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-content">
+                <span class="stat-number">ISO & CE</span>
+                <p class="stat-label">Certified Quality</p>
+            </div>
+            <p class="stat-desc">Meeting the highest international quality and safety standards.</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-content">
+                <span class="stat-number">Private Label</span>
+                <p class="stat-label">Custom Ready</p>
+            </div>
+            <p class="stat-desc">Tailored branding and packaging solutions to fit your market.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CERTIFICATIONS SECTION -->
+<section class="cert-section">
+    <div class="cert-container">
+        <h2 class="cert-title"style="size:30px; color: #0fb1a3; font-weight: 700;">Certification & Compliance</h2>
+        
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-icon-bg">
+                    <img src="iso-logo.png" alt="ISO 13485">
+                </div>
+                <p class="cert-name">ISO 13485</p>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-icon-bg">
+                    <img src="ce-logo.png" alt="CE / EU MDR">
+                </div>
+                <p class="cert-name">CE / EU MDR</p>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-icon-bg">
+                    <img src="fda-logo.png" alt="FDA Approvals">
+                </div>
+                <p class="cert-name">FDA Approvals</p>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-icon-bg">
+                    <img src="gmp-logo.png" alt="WHO-GMP">
+                </div>
+                <p class="cert-name">WHO-GMP</p>
             </div>
         </div>
     </div>
 </section>
-
-<footer>
-    <div class="footer-content">
-        <div class="footer-logo-section">
-            <div class="footer-logo">AdVitum</div>
-            <p>Empowering healthcare with quality supplies. Your trusted partner in medical distribution and logistics.</p>
-            <div class="footer-social">
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-            </div>
+<section class="download-section">
+    <div class="download-card">
+        <div class="pdf-icon">
+            <i class="fas fa-file-pdf"></i>
         </div>
-        <div class="footer-links-group">
-            <div class="footer-links">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#about-us-section">About Us</a></li>
-                    <li><a href="#contact-section">Contact</a></li>
-                    <li><a href="#">Careers</a></li>
-                    
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Products</h4>
-                <ul>
-                    
-                    <li><a href="#">All Supplies</a></li>
-                </ul>
-            </div>
+        
+        <div class="download-info">
+            <h3 class="download-title">Advitum Catalogue</h3>
+            <p class="download-subtitle">PDF • 4.2 MB • English</p>
+        </div>
+
+        <div class="download-actions">
+            <a href="/media/Advitum_Catalogue.pdf" target="_blank" class="btn-view">
+                View
+            </a>
             
+            <a href="/media/Advitum_Catalogue.pdf" download="Advitum_Catalogue_2026" class="btn-download">
+                <i class="fas fa-download"></i> Download
+            </a>
         </div>
     </div>
-    <div class="footer-bottom">
-        &copy; 2025 MED-CARE. All rights reserved. Designed for Modern Healthcare.
+</section>
+
+<div class="py-20 bg-[#f8fafb] overflow-hidden">
+    
+    <header class="text-center mb-12">
+        <h2 class="text-5xl font-black text-[#00877C] tracking-tight">
+            AdVitum <span class="text-gray-700">Commitment</span>
+        </h2>
+    </header>
+
+    <div class="slider-container relative max-w-6xl mx-auto px-4">
+        <button id="prevBtn" class="nav-btn left"> <i class="fas fa-chevron-left"></i> </button>
+        <button id="nextBtn" class="nav-btn right"> <i class="fas fa-chevron-right"></i> </button>
+
+        <div id="card-container" class="scroll-container">
+            <div class="feature-card">
+                <div class="inner-square">
+                    <div class="icon-blob bg-blue-50 text-blue-600"><i class="fas fa-globe-americas"></i></div>
+                    <h4 class="text-2xl font-bold text-gray-800">Global Reach</h4>
+                    <p class="text-gray-500 mt-2 text-sm leading-relaxed">Delivering certified medical products worldwide.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="inner-square">
+                    <div class="icon-blob bg-orange-50 text-orange-500"><i class="fas fa-certificate"></i></div>
+                    <h4 class="text-2xl font-bold text-gray-800">Quality</h4>
+                    <p class="text-gray-500 mt-2 text-sm leading-relaxed">Highest standards for patient safety.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="inner-square">
+                    <div class="icon-blob bg-indigo-50 text-indigo-600"><i class="fas fa-microscope"></i></div>
+                    <h4 class="text-2xl font-bold text-gray-800">Specialized</h4>
+                    <p class="text-gray-500 mt-2 text-sm leading-relaxed">Focus on diagnostic & protective tools.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="inner-square">
+                    <div class="icon-blob bg-green-50 text-green-600"><i class="fas fa-shield-alt"></i></div>
+                    <h4 class="text-2xl font-bold text-gray-800">Reliability</h4>
+                    <p class="text-gray-500 mt-2 text-sm leading-relaxed">Consistent supply chains you can trust.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="inner-square">
+                    <div class="icon-blob bg-purple-50 text-purple-600"><i class="fas fa-lightbulb"></i></div>
+                    <h4 class="text-2xl font-bold text-gray-800">Innovation</h4>
+                    <p class="text-gray-500 mt-2 text-sm leading-relaxed">Adapting to modern medical needs.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="inner-square">
+                    <div class="icon-blob bg-red-50 text-red-600"><i class="fas fa-headset"></i></div>
+                    <h4 class="text-2xl font-bold text-gray-800">Support</h4>
+                    <p class="text-gray-500 mt-2 text-sm leading-relaxed">24/7 expert medical assistance.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <div class="footer-logo-container">
+                <img src="{% static 'new_logo.png' %}" alt="AdVitum Logo" class="footer-logo">
+            </div>
+            <p>Trusted global supplier of certified surgical and medical disposable products, delivering quality and reliability to international healthcare markets.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Product Categories</h4>
+            <ul>
+                <li><a href="{% url 'products' %}">Surgical Gloves</a></li>
+                <li><a href="{% url 'products' %}">Face Masks</a></li>
+                <li><a href="{% url 'products' %}">IV Cannula</a></li>
+                <li><a href="{% url 'products' %}">Disposable Gowns</a></li>
+                <li><a href="{% url 'products' %}">Diagnostic & Lab Products</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'products' %}">Products</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Contact Us</h4>
+            <ul class="contact-list">
+                <li><i class="fas fa-envelope"></i> info@advitumhealthcare.com</li>
+                <li><i class="fas fa-phone"></i> +91 9898265440</li>
+                <li><i class="fas fa-location-dot"></i>Siddhi Vinayak Business Park, Makarba, S.G. Road, Ahmedabad(380051), Gujarat, India</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="social-centered-wrapper">
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/company/advitum-healthcare/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/9898265440" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1QCwCrvfFL" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/AdVitumHC" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
     </div>
 </footer>
 
-    <script>
-        // SCROLL EFFECT LOGIC (Updated to handle both Navbar and Sticky Search)
-        const navbar = document.getElementById("navbar");
-        const stickySearchWrapper = document.getElementById("stickySearchWrapper");
-        const stickySearchOffset = document.querySelector('.search-container-main').offsetTop;
 
-        window.onscroll = function() {
-            const scrollY = document.body.scrollTop || document.documentElement.scrollTop;
 
-            // 1. Navbar Scroll
-            if (scrollY > 50) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+        const navbar = document.getElementById('navbar');
 
-            // 2. Sticky Search Bar Visibility
-            // Show sticky search when scrolled past the initial search bar
-            // Use 200px as a buffer past the hero section's height (500px + 75px nav = 575px)
-            if (scrollY > 550) { 
-                stickySearchWrapper.classList.add("visible");
-            } else {
-                stickySearchWrapper.classList.remove("visible");
-            }
+        // 1. MOBILE MENU TOGGLE
+        menuBtn.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            menuBtn.classList.toggle('is-active');
+        });
+
+        // 2. SCROLL NAVBAR EFFECT
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        // 3. CAROUSEL AUTO-LOOP (synced with text)
+        const images = document.querySelectorAll(".carousel-images img");
+        const heroTextSlides = document.querySelectorAll(".hero-text-slide");
+        let currentIndex = 0;
+        function nextSlide() {
+            images[currentIndex].classList.remove("active-image");
+            heroTextSlides[currentIndex].classList.remove("active-text");
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add("active-image");
+            heroTextSlides[currentIndex].classList.add("active-text");
+        }
+        setInterval(nextSlide, 3000);
+
+        // 4. COUNTER LOGIC (RE-ADDED)
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; 
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText.replace('+', '');
+                    const inc = target / speed;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc) + '+';
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target + '+';
+                    }
+                };
+                updateCount();
+            });
         };
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // ORIGINAL AD SLIDE LOGIC (KEPT BUT NOT VISUALLY USED, AS PER INSTRUCTION)
-            const slides = document.querySelectorAll('.ad-slide');
-            let current = 0;
-            const slideCount = slides.length;
-            const intervalTime = 5000;
-
-            if (slideCount > 1) {
-                setInterval(() => {
-                    slides[current].classList.remove('active');
-                    current = (current + 1) % slideCount;
-                    slides[current].classList.add('active');
-                }, intervalTime);
-            }
-
-            // Category selection logic (Unchanged)
-            const categoryList = document.getElementById('categoryList');
-            const categoryItems = categoryList.querySelectorAll('.category-item');
-
-            categoryItems.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    categoryItems.forEach(i => i.classList.remove('active'));
-                    item.classList.add('active');
-                });
-            });
-
-            // Search functionality - Connect Hero and Sticky Search to filter logic
-            const heroSearchInput = document.getElementById('heroSearchInput');
-            const stickySearchInput = document.getElementById('stickySearchInput');
-            const itemsContainer = document.getElementById('itemsContainer');
-            const cards = itemsContainer.getElementsByClassName('card');
-
-            function filterProducts(searchValue) {
-                for (let i = 0; i < cards.length; i++) {
-                    const card = cards[i];
-                    const itemName = card.querySelector('h3').textContent.toLowerCase();
-                    const itemDescription = card.querySelector('p').textContent.toLowerCase();
-
-                    if (itemName.includes(searchValue) || itemDescription.includes(searchValue)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }
-            }
-
-            heroSearchInput.addEventListener('keyup', function() {
-                const searchValue = this.value.toLowerCase();
-                stickySearchInput.value = this.value; // Sync with sticky search
-                filterProducts(searchValue);
-            });
-            
-            stickySearchInput.addEventListener('keyup', function() {
-                const searchValue = this.value.toLowerCase();
-                heroSearchInput.value = this.value; // Sync with hero search
-                filterProducts(searchValue);
-            });
+        // Trigger counters when visible
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting) startCounters();
         });
-
-        // Function to show a toast message (Unchanged)
-        function showToast(message) {
-            const toast = document.getElementById("toast");
-            toast.textContent = message;
-            toast.classList.add("show");
-            setTimeout(function(){
-                toast.classList.remove("show");
-            }, 1500);
-        }
-
-        // Function to Add to Cart (Logic Unchanged)
-        function addToCart(name, price, image) {
-            const profileLink = document.querySelector('#profile-link-container a');
-            const isSignedIn = profileLink && profileLink.dataset.signedIn === 'true';
-
-            if (!isSignedIn) {
-                showToast("!! Please make sure account is active !!");
-                return; 
-            }
-
-            const url = `/cartinserted/?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(image)}`;
-
-            fetch(url)
-                .then(response => {
-                    if (response.ok) {
-                        window.location.href = 'carts.html';
-                    } else {
-                        console.error('Failed to add item to cart');
-                        showToast("!! Please make sure account is active !!");
-                    }
-                })
-                .catch(error => {
-                    console.error('There was an error:', error);
-                    showToast("An error occurred. Please try again.");
-                });
-        }
-
-        // Function to Order (Logic Unchanged)
-        function addtoorder(name, price, image) {
-            const profileLink = document.querySelector('#profile-link-container a');
-            const isSignedIn = profileLink && profileLink.dataset.signedIn === 'true';
-
-            if (!isSignedIn) {
-                showToast("!! Please make sure account is active !!");
-                return;
-            }
-            const url = `/orderinserted/?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}`;
-
-            fetch(url)
-                .then(response => {
-                    if (response.ok) {
-                        window.location.href = `payment.html?amount=${encodeURIComponent(price)}&name=${encodeURIComponent(name)}&image=${encodeURIComponent(image)}`;
-                    } else {
-                        console.error('Failed to add item to order');
-                        showToast("!! Please sign in to place an order. !!");
-                    }
-                })
-                .catch(error => {
-                    console.error('There was an error:', error);
-                    showToast("An error occurred. Please try again.");
-                });
-        }
+        if(counters.length > 0) observer.observe(counters[0]);
+    });
 
 
-/* --- JAVASCRIPT FOR DYNAMIC SCALING AND COMPACT SCROLL --- */
 
-document.addEventListener('DOMContentLoaded', () => {
-    const scrollContainer = document.querySelector('.scroll-container');
+    // -------------------------------------------------------------------------------------
+    const container = document.getElementById('card-container');
     const cards = document.querySelectorAll('.feature-card');
-    
-    if (cards.length === 0) return;
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
 
-    /**
-     * Calculates and applies the necessary offset to center the first and last cards.
-     * This eliminates the need for large CSS padding.
-     */
-    const applyInitialScrollOffset = () => {
-        // Calculate the empty space on one side of the container needed to center a card
-        const offset = (scrollContainer.clientWidth - cards[0].offsetWidth) / 2;
-        
-        // Apply padding-left and padding-right to the container's *style* properties
-        // This makes the offset dynamic based on card width.
-        scrollContainer.style.paddingLeft = `${offset}px`;
-        scrollContainer.style.paddingRight = `${offset}px`;
-
-        // Scroll to the start so the first card is centered on load
-        scrollContainer.scrollLeft = 0;
+    // Detect which card is centered to apply 'is-active' class
+    const observerOptions = {
+        root: container,
+        threshold: 0.6, 
     };
-    
-    /**
-     * Finds the index of the card that is currently closest to the center of the viewport.
-     */
-    const findCenteredCardIndex = () => {
-        // Center point of the visible scroll area
-        const containerCenter = scrollContainer.scrollLeft + (scrollContainer.clientWidth / 2);
-        let minDistance = Infinity;
-        let centeredIndex = -1;
 
-        cards.forEach((card, index) => {
-            // Card's center position relative to the scrollable content's start
-            const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-            const distance = Math.abs(cardCenter - containerCenter);
-
-            if (distance < minDistance) {
-                minDistance = distance;
-                centeredIndex = index;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-active');
+            } else {
+                entry.target.classList.remove('is-active');
             }
         });
-        
-        return centeredIndex;
-    };
+    }, observerOptions);
 
-    /**
-     * Updates the classes for the scaling effect.
-     */
-    const updateCardClasses = (centeredIndex) => {
-        cards.forEach((card, index) => {
-            card.classList.remove('is-focused', 'is-neighbor');
-            if (index === centeredIndex) {
-                card.classList.add('is-focused');
-            } else if (index === centeredIndex - 1 || index === centeredIndex + 1) {
-                card.classList.add('is-neighbor');
-            }
-        });
-    };
+    cards.forEach(card => observer.observe(card));
 
-    /**
-     * Main scroll event handler with fast debouncing.
-     */
-    const handleScroll = () => {
-        clearTimeout(scrollContainer.scrollTimeout);
-        scrollContainer.scrollTimeout = setTimeout(() => {
-            const focusedIndex = findCenteredCardIndex();
-            updateCardClasses(focusedIndex);
-        }, 15); // Fast update time
-    };
+    // Smooth scroll amount based on card width
+    const scrollAmount = 320; 
 
-    // 1. Calculate and apply padding offset
-    applyInitialScrollOffset(); 
+    nextBtn.addEventListener('click', () => {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', () => {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+
     
-    // 2. Run initial check after offset is applied
-    handleScroll(); 
-    
-    // 3. Attach scroll listener
-    scrollContainer.addEventListener('scroll', handleScroll);
-    
-    // 4. Recalculate offset if the window size changes (e.g., mobile orientation change)
-    window.addEventListener('resize', () => {
-        // Use a slight delay to ensure card width calculations are correct after resize
-        setTimeout(() => {
-            applyInitialScrollOffset();
-            handleScroll();
-        }, 100);
-    });
-});
 
- 
+</script>
 
-// working of add
-document.addEventListener('DOMContentLoaded', () => {
-    // Select all necessary elements
-    const carousel = document.querySelector('.image-carousel');
-    if (!carousel) return; // Exit if carousel element is not found
-
-    const images = carousel.querySelectorAll('.carousel-images img');
-    const indicators = carousel.querySelectorAll('.indicator');
-    const leftArrow = carousel.querySelector('.left-arrow');
-    const rightArrow = carousel.querySelector('.right-arrow');
-
-    // Variable to track the current slide index (0-based)
-    let currentSlide = 0;
-    const totalSlides = images.length;
-
-    // --- Core Functions ---
-
-    // Function to update the display (image and indicator)
-    const updateCarousel = (index) => {
-        // 1. Update Images
-        images.forEach((img, i) => {
-            // Remove 'active-image' from all images
-            img.classList.remove('active-image');
-        });
-        // Add 'active-image' to the current slide
-        images[index].classList.add('active-image');
-
-        // 2. Update Indicators
-        indicators.forEach((indicator, i) => {
-            // Remove 'active-indicator' from all indicators
-            indicator.classList.remove('active-indicator');
-        });
-        // Add 'active-indicator' to the current indicator
-        indicators[index].classList.add('active-indicator');
-    };
-
-
-    // --- Event Listeners for Arrows ---
-
-    // Handle Right Arrow click
-    rightArrow.addEventListener('click', () => {
-        // Calculate the next slide index.
-        // The modulo operator (%) ensures it wraps back to 0 when it reaches the end.
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarousel(currentSlide);
-    });
-
-    // Handle Left Arrow click
-    leftArrow.addEventListener('click', () => {
-        // Calculate the previous slide index.
-        // We add totalSlides before the modulo to handle the wrap-around from 0 to the last slide.
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateCarousel(currentSlide);
-    });
-
-
-    // --- Event Listeners for Indicators ---
-
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-            // Set the current slide directly to the clicked indicator's index
-            currentSlide = index;
-            updateCarousel(currentSlide);
-        });
-    });
-
-    // Initial setup (redundant if you set the first image/indicator as active in HTML,
-    // but good practice to ensure consistency)
-    updateCarousel(currentSlide);
-});
-
-
-
-
-    </script>
 </body>
 </html>

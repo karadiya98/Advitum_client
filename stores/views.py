@@ -23,11 +23,15 @@ from datetime import date
 
 
 def first(request):
-    return render(request,'first.html')
+    return render(request,'home.html')
 
 
 
 def home(request):
+    return render(request, 'home.html')
+    
+
+def product(request):
     products = None
     
     cate=Categories.getcategory()
@@ -43,5 +47,10 @@ def home(request):
         
         'category':cate,
     }
-    return render(request, 'home.html', context)
-    
+    return render(request, 'product.html', context)
+
+def about(request):
+    return render (request,'about.html')
+
+def contact(request):
+    return render (request,'contact.html')
