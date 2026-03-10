@@ -204,13 +204,13 @@
     object-fit: cover; /* Prevents image stretching */
     opacity: 0;
     /* 12s total: 4s per image (3 images) */
-    animation: medicalFadeLoop 12s infinite; 
+    animation: medicalFadeLoop 16s infinite; 
 }
 
 /* Staggered timing for the 3 images */
 .hero-image-loop img:nth-child(1) { animation-delay: 0s; }
-.hero-image-loop img:nth-child(2) { animation-delay: 4s; }
-.hero-image-loop img:nth-child(3) { animation-delay: 8s; }
+.hero-image-loop img:nth-child(2) { animation-delay: 6s; }
+.hero-image-loop img:nth-child(3) { animation-delay: 10s; }
 
 @keyframes medicalFadeLoop {
     0% { opacity: 0; }
@@ -1357,6 +1357,188 @@
     }
 }
 
+/* --- GLOBAL PRESENCE SECTION --- */
+.adv-global-presence {
+    padding: 80px 20px;
+    background: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+.global-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* --- Left Side: Image Styling --- */
+.global-image-side {
+    position: relative;
+}
+
+.image-frame {
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.main-global-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.image-frame:hover .main-global-img {
+    transform: scale(1.05);
+}
+
+.experience-badge {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: #00A79D;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 167, 157, 0.3);
+}
+
+.experience-badge span {
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: block;
+}
+
+.experience-badge p {
+    margin: 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Right Side: Content Styling --- */
+.global-subtitle {
+    color: #00A79D;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+.global-header h2 {
+    font-size: 2.6rem;
+    color: #2c3e50;
+    margin: 15px 0;
+    line-height: 1.2;
+}
+
+.global-header p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* Region List Grid */
+.region-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.region-item {
+    background: #f4fdfc;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.region-item span {
+    margin-right: 10px;
+}
+
+.region-item:hover {
+    border-color: #00A79D;
+    background: white;
+    transform: translateX(5px);
+}
+
+/* --- Action Buttons --- */
+.global-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.btn-action {
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-view {
+    background: #f4fdfc;
+    color: #00A79D;
+    border: 2px solid #00A79D;
+}
+
+.btn-download {
+    background: #00A79D;
+    color: white;
+    border: 2px solid #00A79D;
+}
+
+.btn-action:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 167, 157, 0.2);
+}
+
+.btn-view:hover {
+    background: #00A79D;
+    color: white;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+    .global-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .global-image-side {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .global-header {
+        text-align: center;
+    }
+    
+    .region-grid {
+        justify-content: center;
+    }
+    
+    .global-actions {
+        justify-content: center;
+        flex-direction: column;
+    }
+}
     </style>
 </head>
 
@@ -1423,24 +1605,24 @@
       <div class="benefit-card">
         <h3>Certified Standards</h3>
         <ul>
-          <li><span class="icon">&#9654;</span><div><strong>100% Sterile & Safe Products</strong> Manufactured and supplied under strict quality and safety protocols.</div></li>
-          <li><span class="icon">&#9654;</span><div><strong>ISO 13485 & CE Certified Portfolio</strong> Internationally accepted standards for seamless market entry.</div></li>
+          <li><span class="icon">&#9654;</span><div><strong>🛡️	Sterile & Safe Products</strong> Manufactured and supplied under strict quality and safety protocols.</div></li>
+          <li><span class="icon">&#9654;</span><div><strong>📜 ISO 13485 & CE Certified</strong> Internationally accepted standards for seamless market entry.</div></li>
         </ul>
       </div>
 
       <div class="benefit-card">
         <h3>Precision Quality</h3>
         <ul>
-          <li><span class="icon">&#9654;</span><div><strong>Advanced Manufacturing & Quality Testing</strong> Precision-controlled production with multi-level inspection processes.</div></li>
-          <li><span class="icon">&#9654;</span><div><strong>Private Label & Custom Packaging Solutions</strong> Tailored branding to meet regional and distributor requirements.</div></li>
+          <li><span class="icon">&#9654;</span><div><strong>⚙️ Advanced Manufacturing & Testing</strong> Precision-controlled production with multi-level inspection processes.</div></li>
+          <li><span class="icon">&#9654;</span><div><strong>🏷️	Private Label & Custom Packaging</strong> Tailored branding to meet regional and distributor requirements.</div></li>
         </ul>
       </div>
 
       <div class="benefit-card">
         <h3>Export Expertise</h3>
         <ul>
-          <li><span class="icon">&#9654;</span><div><strong>Proven Global Export Expertise</strong> Efficient logistics and regulatory understanding across Africa, the Middle East, and Europe.</div></li>
-          <li><span class="icon">&#9654;</span><div><strong>Dedicated & Responsive Customer Support</strong> Professional communication focused on long-term partnerships.</div></li>
+          <li><span class="icon">&#9654;</span><div><strong>🌍 Global Export Expertise</strong> Efficient logistics and regulatory understanding across Africa, the Middle East, and Europe.</div></li>
+          <li><span class="icon">&#9654;</span><div><strong>🤝 Dedicated Customer Support</strong> Professional communication focused on long-term partnerships.</div></li>
         </ul>
       </div>
       
@@ -1461,32 +1643,32 @@
         <div class="impact-points-grid">
             
             <div class="impact-card">
-                <strong>Global Reach</strong>
+                <strong>🌍 Global Reach</strong>
                 <span>Supporting healthcare providers across international markets.</span>
             </div>
 
             <div class="impact-card">
-                <strong>Swift Logistics</strong>
+                <strong>🚚 Swift Logistics</strong>
                 <span>Efficient global network ensuring timely, secure deliveries.</span>
             </div>
 
             <div class="impact-card">
-                <strong>Quality Assured</strong>
+                <strong>✔️ Quality Assured</strong>
                 <span>Strict quality control meeting ISO and CE standards.</span>
             </div>
 
             <div class="impact-card">
-                <strong>Newest Technology</strong>
+                <strong>⚡ Newest Technology</strong>
                 <span>Advanced manufacturing for consistent medical performance.</span>
             </div>
 
             <div class="impact-card">
-                <strong>High Satisfaction</strong>
+                <strong>😊 High Satisfaction</strong>
                 <span>Trusted for professional service and dependable supply.</span>
             </div>
 
             <div class="impact-card">
-                <strong>Wide Range</strong>
+                <strong>📦 Wide Range</strong>
                 <span>Comprehensive portfolio tailored for diverse needs.</span>
             </div>
 
@@ -1560,56 +1742,76 @@
         <div class="cert-grid">
             <div class="cert-card">
                 <div class="cert-icon-bg">
-                    <img src="iso-logo.png" alt="ISO 13485">
+                    <img src="{% static 'iso.png' %}" alt="ISO 13485">
                 </div>
                 <p class="cert-name">ISO 13485</p>
             </div>
 
             <div class="cert-card">
                 <div class="cert-icon-bg">
-                    <img src="ce-logo.png" alt="CE / EU MDR">
+                    <img src="{% static 'eumdr.png' %}" alt="CE / EU MDR">
                 </div>
                 <p class="cert-name">CE / EU MDR</p>
             </div>
 
             <div class="cert-card">
                 <div class="cert-icon-bg">
-                    <img src="fda-logo.png" alt="FDA Approvals">
+                    <img src="{% static 'iso2.png' %}" alt="FDA Approvals">
                 </div>
                 <p class="cert-name">FDA Approvals</p>
             </div>
 
             <div class="cert-card">
                 <div class="cert-icon-bg">
-                    <img src="gmp-logo.png" alt="WHO-GMP">
+                    <img src="{% static 'who.png' %}" alt="WHO-GMP">
                 </div>
                 <p class="cert-name">WHO-GMP</p>
             </div>
         </div>
     </div>
 </section>
-<section class="download-section">
-    <div class="download-card">
-        <div class="pdf-icon">
-            <i class="fas fa-file-pdf"></i>
-        </div>
+
+<section class="adv-global-presence">
+    <div class="global-container">
         
-        <div class="download-info">
-            <h3 class="download-title">Advitum Catalogue</h3>
-            <p class="download-subtitle">PDF • 4.2 MB • English</p>
+        <div class="global-image-side">
+            <div class="image-frame">
+                <img src="{% static 'map.png' %}" alt="AdVitum Global Presence" class="main-global-img">
+                <div class="experience-badge">
+                    <span>10+</span>
+                    <p>Countries</p>
+                </div>
+            </div>
         </div>
 
-        <div class="download-actions">
-            <a href="/media/Advitum_Catalogue.pdf" target="_blank" class="btn-view">
-                View
+        <div class="global-content-side">
+            <div class="global-header">
+                <span class="global-subtitle">🌐 Global Presence</span>
+                <h2>Expanding Healthcare Horizons</h2>
+                <p>AdVitum Healthcare is expanding across Asia, Africa, the Middle East, and Latin America — serving hospitals, distributors, and importers with dependable medical disposables.</p>
+            </div>
+
+            <div class="region-grid">
+                <div class="region-item"><span>📍</span> Africa</div>
+                <div class="region-item"><span>📍</span> South-East Asia</div>
+                <div class="region-item"><span>📍</span> Middle East</div>
+                <div class="region-item"><span>📍</span> Latin America</div>
+            </div>
+
+            <div class="global-actions">
+                 <a href="/media/Advitum_Catalogue.pdf" target="_blank" class="btn-view">
+                View Catalogue
             </a>
             
             <a href="/media/Advitum_Catalogue.pdf" download="Advitum_Catalogue_2026" class="btn-download">
-                <i class="fas fa-download"></i> Download
+                <i class="fas fa-download"></i> Download Catalogue
             </a>
+            </div>
         </div>
+        
     </div>
 </section>
+
 
 <div class="py-20 bg-[#f8fafb] overflow-hidden">
     

@@ -10,7 +10,12 @@
     <title>AdVitum Healthcare</title>
     <link rel="icon" type="image/png" href="{% static 'title_logo.png' %}">
     <link rel="apple-touch-icon" href="{% static 'title_logo.png' %}">
-    
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+   
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -74,7 +79,7 @@
         }
 
         /* --- SEARCH SECTION --- */
-        .search-container-main { position: relative; max-width:800px; margin:120px auto 20px; padding:0 15px; }
+        .search-container-main { position: relative; max-width:800px; margin:120px auto 20px; padding:0 15px; margin-top: -10px; }
         .search-input-hero { 
             width:100%; padding:16px 55px 16px 25px; border-radius:40px; border:none; 
             box-shadow:0 10px 25px rgba(0,0,0,0.05); outline: none; background: white; font-size: 0.95rem;
@@ -524,7 +529,83 @@ body {
     }
 }
 
+/* ----------------- */
+/* --- SIMPLE SOURCING SECTION --- */
+.advitum-sourcing-simple {
+    padding: 40px 20px;
+    margin-top: 60px;
+    font-family: 'Segoe UI', sans-serif;
+}
 
+.sourcing-simple-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.sourcing-simple-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: linear-gradient(to right, #ffffff, #f4fdfc);
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 5px solid #00A79D; /* AdVitum Teal */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+}
+
+.sourcing-simple-content:hover {
+    transform: translateX(5px);
+    box-shadow: 0 6px 20px rgba(0, 167, 157, 0.1);
+}
+
+.sourcing-icon {
+    font-size: 2.5rem;
+    background: #f0fafa;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.sourcing-text h3 {
+    margin: 0 0 8px 0;
+    color: #00877C;
+    font-size: 1.4rem;
+}
+
+.sourcing-text p {
+    margin: 0;
+    color: #556677;
+    line-height: 1.6;
+}
+
+.sourcing-simple-link {
+    white-space: nowrap;
+    color: #00A79D;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid #00A79D;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.sourcing-simple-link:hover {
+    background: #00A79D;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sourcing-simple-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    .sourcing-simple-link {
+        width: 100%;
+        display: block;
+    }
+}
 
         
     </style>
@@ -552,6 +633,19 @@ body {
     </ul>
 </nav>
 
+<section class="advitum-sourcing-simple">
+    <div class="sourcing-simple-container">
+        <div class="sourcing-simple-content">
+            <div class="sourcing-icon">🎯</div>
+            <div class="sourcing-text">
+                <h3>Custom Product Sourcing</h3>
+                <p>This catalogue showcases our core product range. For any additional medical or surgical items, feel free to contact us — <strong>we are fully equipped to source and supply</strong> products as per your requirements with assured quality.</p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
 <div class="search-container-main">
     <input type="search" id="heroSearchInput" placeholder="Search medical catalog..." class="search-input-hero" />
     <i class="fa-solid fa-circle-xmark search-clear-btn" id="heroClear"></i>
@@ -578,6 +672,7 @@ body {
     </div>
 </div>
 
+
 <main class="main-grid" id="itemsContainer">
     {% for item in items %}
     <div class="card">
@@ -598,6 +693,7 @@ body {
     </div>
     {% endfor %}
 </main>
+
 
 <section class="bg-white py-16 px-6 border-t border-b">
     <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-10 text-center">
@@ -673,7 +769,6 @@ body {
             <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.facebook.com/share/1QCwCrvfFL" target="_blank"><i class="fab fa-facebook-f"></i></a>
             <a href="https://x.com/AdVitumHC" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-        </div>
     </div>
 </footer>
 
